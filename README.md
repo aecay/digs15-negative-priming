@@ -66,7 +66,7 @@ Then, you can make the graphs:
 
     all.graphs()
 
-Inspect the source in `graphs.R` function for more detail about
+Inspect the source in the `graphs.R` file for more detail about
 individual graphs.
 
 ## Slide show
