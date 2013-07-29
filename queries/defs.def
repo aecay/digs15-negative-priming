@@ -1,0 +1,9 @@
+ne: na|$Na|Na|nay|ne|Ne|$ne|$Ne|NE
+
+not: na+gt|Na+gt|$na+gt|nacht|naht|nat|NAT|nau+gt|naught|nauht|$nauht|naut|Naut|nawhit|Nawhit|nawht|nawicht|Nawicht|nawiht|Nawiht|nawit|nawt|Nawt|no+g|no+gt|no+gte|noch|nocht|Nocht|noght|noghte|Noghte|nogt|nogte|nohht|Nohht|noht|$noht|Noht|nohte|nooght|not|Not|$not|not+g|note|nott|nou+g|nou+gt|Nou+gt|nou+zt|nought|Nought|noughte|nougt|nouht|nout|nout+g|nouth|nowit|nowt|$nowt|nowte
+
+other_neg: neo|no|nan|nane|non|none|noo|noon
+
+tensed_verb: BEP*|BED*|HVP*|HVD*|AXP*|AXD*|MDP*|MDD*|VBP*|VBD*|MD|DOD*|DOP*
+
+never: n+afr|n+afre|N+afre|n+aure|nafre|naure|nauwer|neauer|$neauer|Neauer|neauermare|neaure|neframa|nefre|neuer|neuer-more|neuere|neuermare|neure|$neure|nevere|neveremo|nochwder

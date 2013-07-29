@@ -1,0 +1,17 @@
+# LaTeX intermediate files
+*-blx.bib
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+
+
+.dropbox
