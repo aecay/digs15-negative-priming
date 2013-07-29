@@ -25,8 +25,7 @@
 \resetcountonoverlays{excnt}    % Play nicely with Beamer
 
 \RequirePackage{graphicx}
-\DeclareGraphicsExtensions{.pdf,.jpg}
-\graphicspath{{figures/}}
+\DeclareGraphicsExtensions{.pdf,.jpg,.png}
 
 %%%%% References
 
