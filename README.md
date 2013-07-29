@@ -39,11 +39,11 @@ PPCME2.  This file is the input to the next stage.
 
 The analysis is provided in the form of R source code,, in two files in
 the `scripts` subdirectory.  In order to use this code, you will need to
-install the `stringr`, `ggplot2`, `plyr`, and `tikzDevice` packages (the
-last only if you intend to replicate the graphs for compilation to PDF,
-and not merely interactively in the R console):
+install the `stringr`, `ggplot2`, `plyr`, `reshape2`. and `tikzDevice`
+packages (the last only if you intend to replicate the graphs for
+compilation to PDF, and not merely interactively in the R console):
 
-    install.packages(c("stringr","plyr","ggplot2"))
+    install.packages(c("stringr","plyr","ggplot2", "reshape2"))
     install.packages(c("tikzDevice"), repos = c("http://R-Forge.R-project.org"))
 
 (The `tikzDevice` package has to be installed from a non-default
@@ -64,10 +64,10 @@ Then, load the data into R:
 
 Then, you can make the graphs:
 
-    three.lines.graph(neg)
-    ne.not.fac(neg)
-    nnb.fac(neg)
-    nnb.fac(neg, pre = 1350, post = 1401)
+    all.graphs()
+
+Inspect the source in `graphs.R` function for more detail about
+individual graphs.
 
 ## Slide show
 
