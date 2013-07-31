@@ -97,7 +97,7 @@ coding_query:
    X: IP* idoms NEG+*
    /* ne ... none or ne ... never type constructions */
    X: IP* doms Q AND Q idoms other_neg
-   X: IP* idoms ADVP* AND ADVP* idoms ADV AND ADV idoms never
+   X: IP* idoms ADVP* AND ADVP* idoms ADV AND ADV idoms neverplus
    /* not only type constructions */
    X: not iprecedes FP*
    /* the following cases look like constituent negation */
@@ -141,6 +141,8 @@ coding_query:
     matrix: CP-MAT* isroot
     relative: CP-REL* isroot
     that: CP-THT* isroot
+    imperative: CP-IMP* isroot
+    second-conjunct: CP-CONJ* isroot
     other: ELSE
 }
 
