@@ -143,3 +143,22 @@ coding_query:
     that: CP-THT* isroot
     other: ELSE
 }
+
+/* never position */
+8: {
+   preverbal: IP* idoms ADVP* AND ADVP* idomsonly ADV* AND ADV* idoms never AND IP* idoms tensed_verb AND ADV* precedes tensed_verb
+   postverbal: IP* idoms ADVP* AND ADVP* idomsonly ADV* AND ADV* idoms never AND IP* idoms tensed_verb AND tensed_verb precedes ADV*
+   -: ELSE
+}
+
+/* not position */
+9: {
+   preverbal: IP* idoms NEG* AND NEG* idomsonly not AND IP* idoms tensed_verb AND NEG* precedes tensed_verb
+   postverbal: IP* idoms NEG* AND NEG* idomsonly not AND IP* idoms tensed_verb AND tensed_verb precedes NEG*
+   -: ELSE
+}
+
+10: {
+    finite: IP* idoms tensed_verb
+    -: ELSE
+}
