@@ -61,10 +61,10 @@ three.lines.graph <- function(neg, write = FALSE) {
                       scale_size_continuous("N", breaks = c(250, 500))
 
     if (write) {
-        tikz("figures/three-lines.tikz", width = 4, height = 2.25)
+        tikz("figures/three-lines.tikz", width = 4, height = 1.75)
         print(plt + scale_color_brewer("Type", palette = "Set2"))
         dev.off()
-        tikz("figures/three-lines-handout.tikz", width = 4, height = 2.25)
+        tikz("figures/three-lines-handout.tikz", width = 4, height = 1.75)
         print(plt + scale_color_grey("Type") + theme_minimal())
         dev.off()
     }
