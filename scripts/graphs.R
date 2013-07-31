@@ -21,7 +21,7 @@ estival.graph <- function (write = FALSE) {
 
     dodge <- position_dodge(width=.9)
 
-    estival$Prime <- factor(estival$Prime, levels=c('none','lexical','transform'))
+    estival$Prime <- factor(estival$Prime, levels=c('none','lexical','trans.'))
 
     plt <- ggplot(estival, aes(fill = Target, x = Prime, y = Rate)) +
         geom_bar(position = dodge, stat = "identity") +
@@ -55,16 +55,16 @@ three.lines.graph <- function(neg, write = FALSE) {
     plt <- ggplot(aes(x = year, y = value, color = variable),
                   data = neg.plot.data) +
                       geom_point(aes(size = total)) +
-                      geom_smooth(aes(, weight = total), se = FALSE) +
+                      geom_smooth(aes(weight = total), se = FALSE, linewidth=5) +
                       xlab("Year") +
                       ylab("\\% negative declaratives") +
                       scale_size_continuous("N", breaks = c(250, 500))
 
     if (write) {
-        tikz("figures/three-lines.tikz", width = 4, height = 2.5)
+        tikz("figures/three-lines.tikz", width = 4, height = 2.25)
         print(plt + scale_color_brewer("Type", palette = "Set2"))
         dev.off()
-        tikz("figures/three-lines-handout.tikz", width = 4, height = 2.5)
+        tikz("figures/three-lines-handout.tikz", width = 4, height = 2.25)
         print(plt + scale_color_grey("Type") + theme_minimal())
         dev.off()
     }
@@ -92,21 +92,22 @@ ne.not.fac <- function(df, pre = 1250, post = 1350,
 
     plt <- ggplot(aes(x = prev.neg.type, y = value, fill = variable), data = plot.data.melt) +
         geom_bar(stat = "identity", position = "dodge") +
-        ggtitle("Facilitation of ne and not") +
+        ggtitle("Facilitation of \\emph{ne} and \\emph{not}") +
         xlab("Preceding token") +
         ylab("Percent") +
         scale_y_continuous(limits=c(0,1)) +
         # It's kind of bizarre that the below uses limits and not breaks, but
-                                        # what can one do?
-        scale_x_discrete(limits = c("ne", "not", "both")) +
+        # what can one do?
+        scale_x_discrete(limits = c("ne", "not", "both"),
+                         labels = c("ne alone", "not alone", "ne...not")) +
         guides(fill = guide_legend("Token")) +
         theme(panel.grid.major.x = element_blank())
 
     if (write) {
         tikz(paste0(file, ".tikz"), width = 4, height = 2.5)
-        print(plt + scale_fill_brewer(palette = "Set2"),
-              breaks = c("pct.ne", "pct.not"),
-              labels = c("has ne?", "has not?"))
+        print(plt + scale_fill_brewer(palette = "Set2",
+                                      breaks = c("pct.ne", "pct.not"),
+                                      labels = c("ne + ne...not", "not + ne...not")))
         dev.off()
         tikz(paste0(file, "-handout.tikz"), width = 4, height = 2.5)
         print(plt + scale_fill_grey(breaks = c("pct.ne", "pct.not"),
@@ -140,10 +141,12 @@ nnb.fac <- function(df, pre = 1250, post = 1350, write = FALSE,
 
     plt <- ggplot(aes(x = prev.neg.type, y = value, fill = variable), data = plot.data.melt) +
         geom_bar(stat = "identity", position = "dodge") +
-        ggtitle("Facilitation of ne and not") +
+        ggtitle("Facilitation of \\emph{ne} and \\emph{not}") +
         xlab("Preceding token") +
         ylab("Percent") +
         scale_y_continuous(limits=c(0,1)) +
+        scale_x_discrete(limits = c("ne", "not", "both"),
+                         labels = c("ne alone", "not alone", "ne...not")) +
         guides(fill = guide_legend("Token")) +
         theme(panel.grid.major.x = element_blank())
 
@@ -151,7 +154,17 @@ nnb.fac <- function(df, pre = 1250, post = 1350, write = FALSE,
         tikz(paste0(file, ".tikz"), width = 4, height = height)
         print(plt + scale_fill_brewer(palette = "Set2",
                                       breaks = c("pct.ne", "pct.not", "pct.both"),
-                                      labels = c("ne alone", "not alone", "both")))
+                                      labels = c("ne alone", "not alone", "ne...not")))
+        dev.off()
+        tikz(paste0(file, "-handout.tikz"), width = 4, height = height)
+        print(plt + scale_fill_grey(breaks = c("pct.ne", "pct.not", "pct.both"),
+                                    labels = c("ne alone", "not alone", "both"))
+              + (theme_minimal() + theme(panel.grid.major.x = element_blank())))
+        dev.off()
+    }
+
+    return (plt)
+}
         dev.off()
         tikz(paste0(file, "-handout.tikz"), width = 4, height = height)
         print(plt + scale_fill_grey(breaks = c("pct.ne", "pct.not", "pct.both"),
