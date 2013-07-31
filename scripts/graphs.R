@@ -272,5 +272,8 @@ all.graphs <- function () {
     three.lines.graph(neg, write = TRUE)
     ne.not.fac(neg, write = TRUE)
     nnb.fac(neg, write = TRUE)
-    nnb.fac(neg, write = TRUE, file = "figures/nnb-fac-late", pre = 1350, post = 1401, height = 2.25)
+    nnb.fac(neg, write = TRUE, file = "figures/nnb-fac-late",
+            pre = 1350, post = 1401, height = 2.25)
+    patch.graph(neg, write = TRUE)
+
 }
