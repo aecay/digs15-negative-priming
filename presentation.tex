@@ -58,7 +58,7 @@
 \begin{frame}{The persistence effect}
 	\begin{itemize}
           \item Individual observations of variable phenomena are not independent \parencite{Sankoff:1978}
-		\item \textbf{Persistence:} the tendency to repeat the same linguistic option again
+		\item \textbf{Persistence:} the tendency to repeat the same linguistic option again in natural speech
 		\item Inherently interesting phenomenon, but also a useful dependent variable for its reflection of underlying structures
 	\end{itemize}
 \end{frame}
@@ -66,7 +66,9 @@
 \begin{frame}{Experimental structural priming}
 	\begin{itemize}
 		\item Persistence seems to be related to the experimental phenomenon of priming
-		\item Extensive structural priming literature (beginning with \textcite{Bock:1986}) demonstrates that syntactic structures can be primed
+		\item Extensive structural priming
+                  literature \parencite[beginning with][]{Bock:1986}
+                  demonstrates that syntactic structures can be primed
 		\item For example, use of a double-object construction gives rise to a preference for double-object over prepositional dative
 		% nice clean citation for this one? just Bock?
 	\end{itemize}
@@ -75,7 +77,7 @@
 \begin{frame}{Persistence in written and spoken corpora}
 	\begin{itemize}
           \item Early demonstrations of persistence in spoken language include number agreement in Spanish DPs \parencite{Poplack:1980} and passive alternation \parencite{Weiner:1983}
-          \item \parencite{Gries:2005} finds that persistence effects in both written and spoken corpora are consistent with experimental results for the same constructions
+          \item \textcite{Gries:2005} finds that persistence effects in both written and spoken corpora are consistent with experimental results for the same constructions
 		\item Linking hypothesis: persistence effects in written historical data reflect priming effects in language production at the time
 	\end{itemize}
 \end{frame}
@@ -88,7 +90,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Previous demonstrations of structural identity in persistence}
+\begin{frame}{Previous demonstrations of structural identity}
 	\begin{itemize}
           \item \textcite{Estival:1985}: different types of passives (lexical vs transformational) each facilitate themselves but not each other
           \item The structural distinction this reflects is maintained in modern syntactic accounts \parencite[e.g.][]{Embick:2004}
@@ -100,10 +102,14 @@
         \end{center}
 \end{frame}
 
-\begin{frame}{Previous demonstrations of structural identity in persistence}
+\begin{frame}{Previous demonstrations of structural identity in persistence} % priming?
 	\begin{itemize}
           \item \textcite{Bock:1990}: Infinitival purpose clauses with
             “to” do not facilitate prepositional datives with “to”
+            \begin{itemize}
+              \item I brought a book to study
+              \item I brought a book to Stella
+            \end{itemize}
           \item \textcite{Ferreira:2003}: complementizer \textit{that}
             presence is not increased by previous use of demonstrative \textit{that}
 	\end{itemize}
@@ -129,6 +135,11 @@
       \item During the period of the change, a large number of negative
         sentences have both \emph{ne} and \emph{not}:
     \end{itemize}
+    % TODO; shorten the graph
+    \ex
+    he ne shal nouʒt decieue him \trailingcitation{Early Prose Psalter,
+        161:131:11, from \textcite{Frisch1997}}
+    \xe
     % To generate this plot:
     % > neg <- cleanNegData("queries/coding.cod.ooo")
     % > three.lines.graph(neg, write = TRUE)
@@ -179,7 +190,7 @@
         parallel \parencite{Kroch1989}
       \item To argue that \emph{ne ... not} results from independent
         insertion of \emph{ne} and \emph{not}: P(\emph{ne}) *
-        P(\emph{not}) = P(\emph{ne ... not})
+        P(\emph{not}) ≈ P(\emph{ne ... not})
     \end{itemize}
 \end{frame}
 
@@ -190,7 +201,7 @@
       \item Jespersen’s Cycle: \emph{ne}, \emph{ne ... not}, and
         \emph{not} are each stages of the cycle
       \item In \emph{ne ... not} constructions, \emph{ne} does not have
-        negative force
+        negative force (cf.~negative concord)
     \end{itemize}
 
     \begin{multicols}{3}
@@ -236,6 +247,9 @@
         late imprisonment
         \trailingcitation{Shakes.\ \emph{Richard III}}
         \xe
+        \ex~
+        j'évite qu'il ne découvre la raison.
+        \xe
     \end{itemize}
 \end{frame}
 
@@ -243,7 +257,7 @@
     \frametitle{Disagreement}
     \begin{itemize}
       \item There is a fundamental disagreement between Frisch and
-        Wallage about the grammatical factors at play in the change from
+        Wallage about the grammatical structures at play in the change from
         \emph{ne} to \emph{not}
       \item This can be summarized by the question: are there two atomic
         units (\emph{ne} and \emph{not}) interacting during this change,
@@ -260,18 +274,19 @@
     \begin{itemize}
       \item The data used in this presentation come from the
         PPCME2 \parencite{Kroch2001}
-      \item The data are restricted to time period 1250–1350, the middle
-        century of the change
       \item We assembled a corpus of attestations of consecutive
         negative declarative clauses
         \begin{itemize}
           \item can be at any distance (must be in the same text)
-          \item cannot have a negative question or excluded instance of
-            negation intervening
+          \item cannot have another negated clause intervening
             % TODO: I don’t think we exclude constituent negation yet,
             % if indeed we should.
         \end{itemize}
-      \item This comprises 439 tokens
+      \item The resulting corpus contains 598 target–prime pairs from
+        the years 1250 – 1350, the middle century of the change and the
+        focus of the bulk of our analysis
+        % To calculate N:
+        % > with(subset(neg, year >= 1250 & year < 1350), sum(!is.na(prev.neg.type)))
     \end{itemize}
 \end{frame}
 
@@ -286,7 +301,8 @@
         publication) was not included
     \end{itemize}
 
-    For exact details of queries used etc., see the code at %TODO: link
+    For exact details of queries used etc., see the code at
+    \url{https://github.com/aecay/digs15-negative-priming}
 \end{frame}
 
 \subsection{Two-atom model}
@@ -321,42 +337,33 @@
 \begin{frame}
     \frametitle{Two-atom prediction: no}
     \begin{itemize}
-      \item This prediction is not borne out
+      \item This prediction is not borne out completely
     \end{itemize}
 
-    % To generate this graph:
-    % > ne.not.fac(neg, write = TRUE)
-    \begin{center}
-        \includegraph{figures/ne-not-fac}
-    \end{center}
+    \begin{overprint}
+        \onslide<1 | handout:1 >
+        % To generate this graph:
+        % > ne.not.fac(neg, write = TRUE)
+        \begin{center}
+            \includegraph{figures/ne-not-fac}
+        \end{center}
+        \onslide<2 | handout:2 >
+        \begin{center}
+            \begin{tikzpicture}[scale=3]
+                \node[circle, draw, minimum size=0.6in](ne-atom) at (1,1) {\textsc{ne}};
+                \node[circle, draw, minimum size=0.6in](not-atom) at (1,0) {\textsc{not}};
+                \node[align=left](ne-surface) at (0,1) {\emph{ne}};
+                \node[align=left](ne-not-surface) at (0,0.5) {\emph{ne ... not}};
+                \node[align=left](not-surface) at (0,0) {\emph{not}};
 
-\end{frame}
-
-\begin{frame}
-    \frametitle{Two-atom prediction: no}
-    \begin{itemize}
-      \item This prediction is not borne out
-    \end{itemize}
-
-    \begin{center}
-        \begin{tikzpicture}[scale=3]
-            \node[circle, draw, minimum size=0.6in](ne-atom) at (1,1) {\textsc{ne}};
-            \node[circle, draw, minimum size=0.6in](not-atom) at (1,0) {\textsc{not}};
-            \node[align=left](ne-surface) at (0,1) {\emph{ne}};
-            \node[align=left](ne-not-surface) at (0,0.5) {\emph{ne ... not}};
-            \node[align=left](not-surface) at (0,0) {\emph{not}};
-
-            \draw[<-,>=triangle 45] (ne-atom) -- (ne-surface);
-            \draw[<-,>=triangle 45] (ne-atom) -- (ne-not-surface);
-            \draw[<-,>=triangle 45] (not-atom) -- (not-surface);
-            \draw[<-,>=triangle 45,
-            postaction={decorate,decoration={markings,%
-                    mark=at position .5 with {%
-                        \draw[red,thick,arrows=-] (-3pt,-3pt) -- (3pt,3pt);
-                        \draw[red,thick,arrows=-] (3pt,-3pt) -- (-3pt,3pt);}}}]
-            (not-atom) -- (ne-not-surface);
-        \end{tikzpicture}
-    \end{center}
+                \draw[<-,>=triangle 45] (ne-atom) -- (ne-surface);
+                \draw[<-,>=triangle 45, dashed] (ne-atom) -- (ne-not-surface);
+                \draw[<-,>=triangle 45] (not-atom) -- (not-surface);
+                \draw[<-,>=triangle 45,dashed]
+                (not-atom) -- (ne-not-surface);
+            \end{tikzpicture}
+        \end{center}
+    \end{overprint}
 \end{frame}
 
 \subsection{Three-atom model}
@@ -425,8 +432,8 @@
                 \draw[<-,>=triangle 45] (ne-not-atom) -- (ne-not-surface);
                 \draw[<-,>=triangle 45] (not-atom) -- (not-surface);
 
-                \draw[<-,>=triangle 45,red] (ne-atom) -- (ne-not-surface);
-                \draw[<-,>=triangle 45,red] (ne-not-atom) -- (ne-surface);
+                \draw[<-,>=triangle 45,dashed] (ne-atom) -- (ne-not-surface);
+                \draw[<-,>=triangle 45,dashed] (ne-not-atom) -- (ne-surface);
             \end{tikzpicture}
         \end{center}
     \end{overprint}
@@ -441,23 +448,67 @@
         \emph{ne} alone is the negator, with \emph{not} providing merely
         emphasis
       \item In these cases, \emph{ne} facilitates itself and emphatic
-        \emph{not} is further added or subtracted
+        \emph{not} is additionally either added or subtracted
     \end{itemize}
 
-    \begin{center}
-        \small
-        \begin{tikzpicture}[level distance=22pt,align=center]
-            \Tree [.TP T [.NegP [.Neg \emph{ne}\textsubscript{[+Neg]} ]
-            [.VP [.AdvP {\emph{not} (/\emph{never}, etc.)} ] [.VP \edge[roof]; {...} ] ] ] ]
+    % TODO: align trees at top, arrow between ne and not, animate not
+    % (along with bullet point)
+    \begin{minipage}{0.75\linewidth}
+        \small\centering
+        \begin{tikzpicture}[level distance=22pt]
+            \Tree [.TP T [.NegP [.Neg
+            \node(ne1){\emph{ne}\textsubscript{[+Neg]}}; ] [.VP
+            \edge[roof]; {...} ] ] ]
+
+            \begin{scope}[shift={(1.5in,0in)}]
+                \Tree [.TP T [.NegP [.Neg
+                \node(ne2){\emph{ne}\textsubscript{[+Neg]}}; ]
+                [.VP [.AdvP \node [visible on={<2 | handout:1 >}]
+                {\emph{not} (/\emph{never}, etc.)}; ]
+                [.VP {...} ] ] ] ]
+            \end{scope}
+
+            \draw[->,visible on={<1 | handout:1 >}] (ne1) to[out=-90,in=-90] (ne2);
         \end{tikzpicture}
-    \end{center}
+    \end{minipage}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Further support for the three-atom model}
+    \frametitle{Testing the patch}
+    \begin{itemize}
+      \item It is possible to test this fix, using a method from
+        \textcite{Frisch1997} to calculate the rate of \emph{ne...not}
+        tokens which contain adverbial \emph{not}
+      \item For \emph{ne...not} targets, the test is exact: we discount
+        the number of observed \emph{ne...not} tokens by the rate of
+        adverbial \emph{ne...not}
+      \item For \emph{ne...not} primes, we cannot assume that the
+        distribution of adverbial \emph{not} is consistent across target
+        categories
+      \item However, we can set a bound on the discount by assuming that
+        all adverbial \emph{not} cases prime \emph{ne}
+      % \item Additional caveat: we must restrict this analysis to matrix
+      %   clauses, because the adverb-fronting behavior in subordinate
+      %   clauses is different (so, N = 256)
+        % To calculate:
+        % > with(subset(neg, year >= 1250 & year < 1350 & clausetype == "matrix"), sum(!is.na(prev.neg.type)))
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Testing the patch}
+    \begin{itemize}
+      \item Frisch’s formula: N(\emph{ne} with adverbial \emph{not}) =
+        N(\emph{ne} with preverbal \emph{not}) ÷ 0.16
+    \end{itemize}
+    \includegraph{figures/patch}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Further evidence against the two-atom model}
     \begin{itemize}
       \item Another piece of evidence in favor of the three-atom model
-        comes from the later period of the change (1350–1400; N = 951)
+        comes from the later period of the change (1350–1400; N = 1617)
       \item Here, we see that \emph{ne} facilitates \emph{not} more
         strongly than \emph{ne ... not} does, which is never expected to
         happen on the two-atom model
@@ -476,8 +527,10 @@
     \frametitle{Conclusions}
     \begin{itemize}
       \item The corpus persistence data presented here, interpreted as
-        priming, favor the three-atom account of the change in Middle
-        English negation over the two-atom one
+        priming, are inconsistent with the two-atom model and provide
+        tenuous support for the three-atom one
+
+        % TODO: if we don’t win the tony thing, then weaken the above
 
       \item It remains a subject of investigation how this fact fits
         into the total picture of evidence about the change, which must
