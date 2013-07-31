@@ -165,6 +165,97 @@ nnb.fac <- function(df, pre = 1250, post = 1350, write = FALSE,
 
     return (plt)
 }
+
+patch.graph <- function(df, pre = 1250, post = 1350, write = FALSE,
+                        file = "figures/patch", height = 2.5) {
+    library(ggplot2)
+    library(reshape)
+
+    df.subs <- subset(df, year >= pre & year < post & !is.na(prev.neg.type))
+
+    plot.data <- ddply(df.subs, .(prev.neg.type),
+                       summarize,
+                       count.ne = sum(has.ne) - sum(has.both),
+                       count.not = sum(has.not) - sum(has.both),
+                       count.both = sum(has.both),
+                       n = length(has.ne),
+                       discounts = sum(not.posn == "preverbal"))
+
+    ## Here, we can make an exact calculation of the rate of adverbial not
+    ## after a previous ne, by counting the number of (ne & preverbal not)
+    ## tokens that follow a previous ne.
+    prev.ne.to.both <-
+        plot.data[plot.data$prev.neg.type == "ne",]$count.both /
+        plot.data[plot.data$prev.neg.type == "ne",]$n
+    bogus.ne.to.both <- plot.data[plot.data$prev.neg.type == "ne",]$discounts / 0.16
+    plot.data[plot.data$prev.neg.type == "ne",]$count.both <-
+        plot.data[plot.data$prev.neg.type == "ne",]$count.both - bogus.ne.to.both
+    ## We also have to subtract the bad cases out of the N!!!  We could add
+    ## them to the ne column instead, but that's a bit like double dipping
+    plot.data[plot.data$prev.neg.type == "ne",]$n <-
+        plot.data[plot.data$prev.neg.type == "ne",]$n - bogus.ne.to.both
+
+    ## Here, we can't get an exact count, since we want to look at the prime
+    ## (well we could, but it would be a pain).  So we'll just approximate by
+    ## looking at all tokens of ne-not, whether or not they are primes
+    ne.not.discount.rate <- with(subset(df,
+                                        neg.type == "both" &
+                                        !is.na(next.neg.type)),
+                                 sum(not.posn == "preverbal") / 0.16 /
+                                 (sum(not.posn == "preverbal") +
+                                  sum(not.posn == "postverbal")))
+
+    prev.both.to.ne <-
+        plot.data[plot.data$prev.neg.type == "both",]$count.ne /
+        plot.data[plot.data$prev.neg.type == "both",]$n
+    old.count.both.to.ne <- plot.data[plot.data$prev.neg.type == "both",]$count.ne
+    plot.data[plot.data$prev.neg.type == "both",]$count.ne <-
+        plot.data[plot.data$prev.neg.type == "both",]$count.ne *
+        (1 - ne.not.discount.rate)
+    ## And subtract from N, again.  It might be a little fishy that we have
+    ## non-integer counts now, but it probably makes little difference (the
+    ## alternative is to round...)
+    plot.data[plot.data$prev.neg.type == "both",]$n <-
+        plot.data[plot.data$prev.neg.type == "both",]$n -
+        old.count.both.to.ne +
+        plot.data[plot.data$prev.neg.type == "both",]$count.ne
+
+    plot.data$pct.not <- plot.data$count.not / plot.data$n
+    plot.data$pct.ne <- plot.data$count.ne / plot.data$n
+    plot.data$pct.both <- plot.data$count.both / plot.data$n
+
+    plot.data.melt <- melt(plot.data, id.vars=c("prev.neg.type"),
+                           measure.vars = c("pct.ne", "pct.not", "pct.both"))
+    plot.data.melt <- subset(plot.data.melt, !is.na(prev.neg.type))
+
+    plot.data.melt$adj <- NA
+
+    plot.data.melt[with(plot.data.melt,
+                        prev.neg.type == "ne" & variable == "pct.both"),]$adj <-
+                            prev.ne.to.both
+    plot.data.melt[with(plot.data.melt,
+                        prev.neg.type == "both" & variable == "pct.ne"),]$adj <-
+                            prev.both.to.ne
+
+    plt <- ggplot(aes(x = prev.neg.type, y = value, fill = variable),
+                  data = plot.data.melt) +
+        geom_bar(stat = "identity", position = "dodge") +
+        ggtitle("Facilitation of \\emph{ne} and \\emph{not} (patched)") +
+        xlab("Preceding token") +
+        ylab("Percent") +
+        scale_y_continuous(limits=c(0,1)) +
+        scale_x_discrete(limits = c("ne", "not", "both"),
+                         labels = c("ne alone", "not alone", "ne...not")) +
+        guides(fill = guide_legend("Token")) +
+        theme(panel.grid.major.x = element_blank()) +
+        geom_errorbar(aes(y = adj, ymin = adj, ymax=adj),
+                      position = "dodge")
+
+    if (write) {
+        tikz(paste0(file, ".tikz"), width = 4, height = height)
+        print(plt + scale_fill_brewer(palette = "Set2",
+                                      breaks = c("pct.ne", "pct.not", "pct.both"),
+                                      labels = c("ne alone", "not alone", "ne...not")))
         dev.off()
         tikz(paste0(file, "-handout.tikz"), width = 4, height = height)
         print(plt + scale_fill_grey(breaks = c("pct.ne", "pct.not", "pct.both"),
