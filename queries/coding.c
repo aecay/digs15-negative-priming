@@ -1,3 +1,11 @@
+/*
+
+Copyright 2013 Aaron Ecay
+Available under the Creative Commons AT-SA or GPL v2+ licenses: see
+the file LICENSE for more information
+
+*/
+
 define: defs.def
 
 node: CP*

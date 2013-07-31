@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Copyright 2013 Aaron Ecay
+# Available under the Creative Commons AT-SA or GPL v2+ licenses: see
+# the file LICENSE for more information
+
 # Edit this command to point to CorpusSearch on your machine
 CS_COMMAND="java -classpath /home/aecay/corpora/CS_2.003.04.jar csearch/CorpusSearch"
 

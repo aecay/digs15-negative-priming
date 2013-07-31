@@ -1,3 +1,7 @@
+% Copyright 2013 Aaron Ecay
+% Available under the Creative Commons AT-SA or GPL v2+ licenses: see
+% the file LICENSE for more information
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{digs-slides}[2011/05/24]
 
