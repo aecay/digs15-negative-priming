@@ -1,4 +1,4 @@
-% Created by tikzDevice version 0.6.2-92-0ad2792 on 2013-07-29 18:49:01
+% Created by tikzDevice version 0.6.2-92-0ad2792 on 2013-07-31 01:59:29
 % !TEX encoding = UTF-8 Unicode
 \begin{tikzpicture}[x=1pt,y=1pt]
 \definecolor[named]{fillColor}{rgb}{1.00,1.00,1.00}
@@ -36,31 +36,31 @@
 	(193.65,128.76);
 \definecolor[named]{fillColor}{rgb}{0.20,0.20,0.20}
 
-\path[fill=fillColor] ( 50.73, 39.08) rectangle ( 64.79, 44.06);
+\path[fill=fillColor] ( 50.73, 39.08) rectangle ( 64.79, 47.87);
 \definecolor[named]{fillColor}{rgb}{0.60,0.60,0.60}
 
-\path[fill=fillColor] ( 64.79, 39.08) rectangle ( 78.84, 68.97);
+\path[fill=fillColor] ( 64.79, 39.08) rectangle ( 78.84, 90.07);
 \definecolor[named]{fillColor}{rgb}{0.80,0.80,0.80}
 
-\path[fill=fillColor] ( 78.84, 39.08) rectangle ( 92.90, 93.88);
+\path[fill=fillColor] ( 78.84, 39.08) rectangle ( 92.90, 61.94);
 \definecolor[named]{fillColor}{rgb}{0.20,0.20,0.20}
 
-\path[fill=fillColor] ( 97.59, 39.08) rectangle (111.65, 47.49);
+\path[fill=fillColor] ( 97.59, 39.08) rectangle (111.65, 40.58);
 \definecolor[named]{fillColor}{rgb}{0.60,0.60,0.60}
 
-\path[fill=fillColor] (111.65, 39.08) rectangle (125.70,111.94);
+\path[fill=fillColor] (111.65, 39.08) rectangle (125.70,122.44);
 \definecolor[named]{fillColor}{rgb}{0.80,0.80,0.80}
 
-\path[fill=fillColor] (125.70, 39.08) rectangle (139.76, 47.49);
+\path[fill=fillColor] (125.70, 39.08) rectangle (139.76, 42.36);
 \definecolor[named]{fillColor}{rgb}{0.20,0.20,0.20}
 
-\path[fill=fillColor] (144.45, 39.08) rectangle (158.51, 41.62);
+\path[fill=fillColor] (144.45, 39.08) rectangle (158.51, 42.75);
 \definecolor[named]{fillColor}{rgb}{0.60,0.60,0.60}
 
-\path[fill=fillColor] (158.51, 39.08) rectangle (172.56,123.15);
+\path[fill=fillColor] (158.51, 39.08) rectangle (172.56, 58.08);
 \definecolor[named]{fillColor}{rgb}{0.80,0.80,0.80}
 
-\path[fill=fillColor] (172.56, 39.08) rectangle (186.62, 41.94);
+\path[fill=fillColor] (172.56, 39.08) rectangle (186.62,105.76);
 \end{scope}
 \begin{scope}
 \path[clip] (  0.00,  0.00) rectangle (289.08,162.61);
@@ -112,11 +112,11 @@
 \path[clip] (  0.00,  0.00) rectangle (289.08,162.61);
 \definecolor[named]{drawColor}{rgb}{0.00,0.00,0.00}
 
-\node[text=drawColor,anchor=base,inner sep=0pt, outer sep=0pt, scale=  0.87] at ( 71.81, 21.16) {both};
+\node[text=drawColor,anchor=base,inner sep=0pt, outer sep=0pt, scale=  0.87] at ( 71.81, 21.16) {ne alone};
 
-\node[text=drawColor,anchor=base,inner sep=0pt, outer sep=0pt, scale=  0.87] at (118.67, 21.16) {ne};
+\node[text=drawColor,anchor=base,inner sep=0pt, outer sep=0pt, scale=  0.87] at (118.67, 21.16) {not alone};
 
-\node[text=drawColor,anchor=base,inner sep=0pt, outer sep=0pt, scale=  0.87] at (165.54, 21.16) {not};
+\node[text=drawColor,anchor=base,inner sep=0pt, outer sep=0pt, scale=  0.87] at (165.54, 21.16) {ne...not};
 \end{scope}
 \begin{scope}
 \path[clip] (  0.00,  0.00) rectangle (289.08,162.61);
@@ -185,6 +185,6 @@
 \path[clip] (  0.00,  0.00) rectangle (289.08,162.61);
 \definecolor[named]{drawColor}{rgb}{0.00,0.00,0.00}
 
-\node[text=drawColor,anchor=base,inner sep=0pt, outer sep=0pt, scale=  1.31] at (118.67,136.55) {Facilitation of ne and not};
+\node[text=drawColor,anchor=base,inner sep=0pt, outer sep=0pt, scale=  1.31] at (118.67,136.55) {Facilitation of \emph{ne} and \emph{not}};
 \end{scope}
 \end{tikzpicture}
