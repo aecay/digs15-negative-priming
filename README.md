@@ -56,7 +56,7 @@ You should set R’s working directory to the root of this repository
 Once you have done that, load the two scripts:
 
     source("scripts/data.R")
-    source("scripts.graphs.R")
+    source("scripts/graphs.R")
 
 Then, load the data into R:
 
