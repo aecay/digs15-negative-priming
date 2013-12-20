@@ -102,8 +102,8 @@ ne.not.fac <- function(df, pre = 1250, post = 1350,
         scale_y_continuous(limits=c(0,1)) +
         # It's kind of bizarre that the below uses limits and not breaks, but
         # what can one do?
-        scale_x_discrete(limits = c("ne", "not", "both"),
-                         labels = c("ne alone", "not alone", "ne...not")) +
+        scale_x_discrete(limits = c("ne", "both", "not"),
+                         labels = c("ne alone", "ne...not", "not alone")) +
         guides(fill = guide_legend("Token")) +
         theme(panel.grid.major.x = element_blank())
 
