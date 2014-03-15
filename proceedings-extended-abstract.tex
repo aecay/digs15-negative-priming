@@ -1,0 +1,417 @@
+\documentclass{article}
+\usepackage{fixltx2e}
+\usepackage{booktabs}
+\usepackage{expex}
+\usepackage{amssymb}
+\usepackage{paralist}
+\usepackage{fontspec}
+
+\setmainfont{Linux Libertine}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,decorations.markings}
+\usepackage{tikz-qtree}
+\usepackage{hyperref}
+\hypersetup{colorlinks,urlcolor=black,linkcolor=black,citecolor=black}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{multicol}
+
+\usepackage[hyperref=true,style=authoryear-comp,%
+dashed=false,mergedate=minimum,maxbibnames=999]{biblatex}
+\addbibresource{~/papers/papers.bib}
+\addbibresource{biblio.bib}
+
+\title{Persistence as a diagnostic of grammatical status: The case of
+    Middle English negation (EXTENDED ABSTRACT)}
+\author{Aaron Ecay and Meredith Tamminga}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:introduction}
+
+Diachronic generative syntax encompasses both the study of the syntactic
+grammar of now-extinct language varieties and of the processes by which
+syntactic grammars change.  In both modes of inquiry, it is necessary to
+draw conclusions about the grammar of a language which no longer has any
+native speakers; investigators’ only recourse is to written productions
+of past native speakers.
+
+\subsection{The Constant Rate Hypothesis}
+\label{sec:const-rate-hypoth}
+
+One tool which is available to bridge the inferential gap between the
+available evidence and the desired conclusions is the Constant Rate
+Hypothesis \parencite[CRH][]{Kroch1989}.  The CRH is based on the
+intuition that, if there is a single grammatical cause underlying
+a spectrum of surface phenomena, then these phenomena will fail to
+evolve in entirely independent ways, but rather will show some common
+evolutionary behavior.  Concretely, the CRH says that surface phenomena
+which are governed by a single grammatical option will evolve with
+parallel slopes (in the logistic-transformed domain); the single slope
+reflects the advance or retreat of the governing grammatical option in
+the population of authors from which observations are drawn.
+
+% The CRH can be used to establish identity between two
+% seemingly-disparate surface phenomena.  This was the use to which
+% \textcite{Kroch1989} put the principle in arguing that \emph{do}-support
+% and the movement of a lexical verb past the adverb \emph{never} were
+% reflexes of a single grammatical parameter (governing verb movement).
+% The CRH can also be used to establish that two phenomena are
+% unrelated. % TODO: example here.
+
+% The statistical tests that undergird the use of the CRH in diachronic
+% inquiry are not a magic bullet; they cannot of themselves conclusively
+% answer questions of grammatical (non)identity or structure.  This
+% limitation stems from several factors.  One has to do with the nature of
+% the statistical tests themselves: standard formulations of the tests can
+% only detect when a true difference is likely to exist; they do not
+% distinguish between the lack of a true difference and the lack of
+% sufficient evidence to make a determination.  The second has to do with
+% another aspect of the statistical procedure.  Since statistical tests of
+% the CRH are embedded in a wider regression model, the outcomes of those
+% tests are conditional on the (non)inclusion of other predictors in the
+% model.  Stated another way, we virtually never expect to see exact
+% identity of slopes to spring from raw data; confounding factors must
+% first be removed.  The specifics of this de-confounnding have the
+% potential to alter the results of the inquiry.  Finally, the application
+% of tests of the CRH is always guided by a research agenda which includes
+% information from other modes of inquiry; this other information
+% contributes to the success of the CRH as a diagnostic tool by allowing
+% it to apply to situations where it is likely to succeed in either
+% confirming or disconfirming a salient question.
+
+\subsection{Persistence}
+\label{sec:persist}
+
+\textcite{Sankoff:1978} observed that individual observations (tokens)
+of variable linguistic phenomena are not independent of each other.  One
+facet of this non-independence is \emph{persistence}: the tendency of
+speakers to repeat the same linguistic option in natural speech.  The
+phenomenon of persistence itself has been the object of study.  An
+extensive experimental literature beginning with \textcite{Bock:1986}
+demonstrates that abstract syntactic structures (and not merely words or
+sounds) can be persistent.  Persistence has also been studied in
+corpora, both written and spoken.  Morphosyntactic features such as
+number agreement inside Spanish DPs \parencite{Poplack:1980} and the
+English passive alternation \parencite{Weiner:1983} have been observed
+to be subject to persistence in spoken corpora.  \textcite{Gries:2005}
+compares persistence effects in both written and spoken corpora with
+those observed experimentally, and finds them to be consistent with each
+other.
+
+The existence of persistence effects has been used to argue for the
+existence of shared structure between surface variants.  In the words of
+\textcite[490]{Branigan:1995}, “If the processing of a stimulus affects
+the processing of another stimulus, then the two stimuli must be related
+[...] if the relationship between the two stimuli is syntactic, then we
+can use this relationship as a way of understanding what syntactic
+information is represented.”  \textcite{Estival:1985} studied two
+different types of Modern English passives (lexical vs.\
+transformational),
+% in a corpus of...writing or speech?
+and found that each type facilitates itself but not the other.
+% This is illustrated in figure 1...
+Though the details of syntactic theories of passive formation have
+changed in the intervening 30 years, modern theories \parencite[such
+as][]{Embick:2004} maintain a distinction between these two types – and
+indeed must do so, in view of Estival’s evidence.
+
+% Bock on dbl obj alternation; ferreira on C vs D that – mention these here?
+
+\subsection{The present study}
+\label{sec:present-study}
+
+In this paper, we will propose the study of persistence data from a
+historical corpus to augment the study of a syntactic change.  We argue
+that persistence serves as a lever which allows the force of
+quantitative language use data to move forward the inquiry into
+syntactic structures.  It thus joins the CRH as a useful, indeed vital,
+tool for diachronic syntacticians.
+
+% TODO: expand
+
+\section{Middle English negation}
+\label{sec:middle-engl-negat}
+
+\begin{figure}
+    \centering
+    \input{figures/three-lines.tikz}
+    % TODO: scale_size_area
+    \caption{The rates of occurrence of the three types of negative sentence in Middle English, during the change from \emph{ne} to \emph{not}.  Data from the PPCME2.}
+    \label{fig:three-lines}
+\end{figure}
+
+In Middle English, there is a change in the exponence of Neg, the head
+which introduces sentence negation.  The negator \emph{ne}, inherited
+from Old English, is lost.  The word \emph{not}, an Old English negative
+adverb, becomes the new exponent of sentence negation.  While the change
+is in progress, there are many tokens of sentences which have both
+\emph{ne} and \emph{not}:
+\ex
+he ne shal nouʒt decieue him \trailingcitation{Early Prose Psalter,
+    161:131:11, from \textcite{Frisch1997}}
+\xe
+In Figure~\ref{fig:three-lines} the change is illustrated with data from
+the Penn Parsed Corpus of Middle English, version
+2. \parencite[PPCME2][]{Kroch2001} The lavender line traces the rise and
+disappearance of \emph{ne...not} sentences.
+% TODO: won’t be lavender in the print version
+
+\subsection{The analysis of \textcite{Frisch1997}}
+\label{sec:frisch-analysis}
+
+\begin{figure}
+    \centering
+    \begin{multicols}{3}
+        \Tree [.TP T [.NegP [.Neg \emph{ne}\textsubscript{[+Neg]} ]
+        [.VP \edge[roof]; {...} ] ] ]
+
+        \Tree [.TP T [.NegP [.XP \emph{not}\textsubscript{[+Neg]} ]
+        [.Neg$'$ [.Neg \emph{ne}\textsubscript{[+Neg]}
+        ] [.VP \edge[roof]; {...} ] ] ] ]
+
+        \Tree [.TP T [.NegP [.XP \emph{not}\textsubscript{[+Neg]} ]
+        [.Neg$'$ [.Neg $\varnothing$ ]
+        [.VP \edge[roof]; {...} ] ] ] ]
+    \end{multicols}
+    \caption{The derivation of the three types of ME negative sentence
+        according to \textcite{Frisch1997}.}
+    \label{fig:frisch-trees}
+\end{figure}
+
+\textcite{Frisch1997} analyzes this change to be due to
+competition \parencite[in the sense of][]{Kroch1989} between two
+grammars.  One grammar dictates that \emph{ne} is the exponent of
+Neg$^0$; the other says that \emph{not} is merged in the specifier of
+NegP, and is the (lone) exponent of that projection.  When both grammars
+(really, lexical entries) are activated, the result is spelling out
+Neg$^0$ as \emph{ne} and Spec,NegP as \emph{not}, leading to a surface
+\emph{ne...not} sentence.  Figure~\ref{fig:frisch-trees} illustrates the
+three derivations.  In this figure, the notation [+Neg] indicates a
+projection which carries the semantic value of sentence negation.
+Frisch invokes an auxiliary hypothesis about the structure of UG to
+avoid the two negations canceling each other out in \emph{ne...not}
+sentences.
+
+% TODO: discuss evidence
+
+\subsection{The analysis of \textcite{wallage08}}
+\label{sec:wallage-analysis}
+
+\begin{figure}
+    \centering
+    \begin{multicols}{3}
+
+        \Tree [.TP T [.NegP [.Neg \emph{ne}\textsubscript{[+Neg]} ]
+        [.VP \edge[roof]; {...} ] ] ]
+
+        \begin{tikzpicture}{every tree node/.style={align=center,anchor=north}}
+            \Tree [.TP T [.NegP [.XP
+            \node(not){\emph{not}{\textsubscript{[+Neg]}}};
+            ] [.Neg$'$ [.Neg \node(ne){\emph{ne}};
+            ] [.VP \edge[roof]; {...} ] ] ] ]
+
+            \draw[->] (not) to[out=-90, in=180] (ne);
+        \end{tikzpicture}
+
+        \Tree [.TP T [.NegP [.XP
+        {\emph{not}{\textsubscript{[+Neg]}}} ]
+        [.Neg$'$ [.Neg $\varnothing$ ] [.VP \edge[roof]; {...} ] ] ] ]
+    \end{multicols}
+    \caption{The derivation of the three types of ME negative sentence
+        according to \textcite{wallage08}.}
+    \label{fig:wallage-trees}
+\end{figure}
+
+\textcite{wallage08} analyzes the change in a different way, taking as a
+point of departure Jespersen’s Cycle, %TODO: cite
+a cross-linguistically well-attested generalization about the evolution
+of negation.  Wallage posits that the Cycle is operative in ME, and that
+\emph{ne}, \emph{ne...not} and \emph{not} are each stages in the cycle,
+each with a separate grammatical existence from the others.  In
+\emph{ne...not} type constructions, according to Wallage, \emph{ne} is
+bereft of negative force, and is rather generated by negative concord.
+This analysis is shown in Figure~\ref{fig:wallage-trees}.
+
+% TODO: Wallage’s evidence
+
+\subsection{Summary}
+\label{sec:summary}
+
+There is a fundamental disagreement between Frisch and Wallage about the
+grammatical structures at play during the ME negation change.  This
+disagreement boils down to the question of whether there were two
+grammatical structures interacting (to wit \emph{ne} and \emph{not}), or
+three (the former two plus \emph{ne...not}).  There is evidence to
+support each position based on the CRH.  Wallage has questioned
+the value of Frisch’s evidence on grounds having to do with (inter alia)
+main vs.\ embedded clause distinctions.  It is possible that this
+criticism is well-taken.  But there is a subtle danger.  The more that
+the data are re-examined and the larger the auxiliary structure of
+corrections and transformations of the raw data grows, the more fragile
+the CRH result becomes.  (This is an especially acute problem in the
+case of Middle English, where most of the available data have already
+been incorporated into the analysis.  Work on later stages of English
+allows the possibility of testing hypotheses on newly-collected
+corpora).
+
+We propose to examine the existing data from the point of view of
+persistence.  Just like the CRH, persistence phenomena allow us to use
+statistical patterns to argue for or against hypotheses about
+grammatical representations.    % ... TODO: move to conclusion
+
+\section{Results}
+\label{sec:results}
+
+In order to undertake our investgation, we assembled a corpus of
+consecutive negative declarative clauses in the PPCME2.  We allowed the
+clauses to be at any distance from each other, but required that there
+not be any intervening “spurious” negation.\footnote{For our purposes,
+    spurious negation consists of:
+    \begin{inparaitem}
+      \item contracted \emph{ne}, as in \emph{nis}, \emph{naere}, etc.
+      \item negative quantifiers (\emph{none}) and adverbs
+        (\emph{never}), whether or not they trigger negative concord
+      \item \emph{not only...} constructions, and
+      \item (possible) constituent negation of a verb or adverb, as in
+        \emph{John might eat but not drink} or \emph{John might not
+            frequently eat}.
+    \end{inparaitem}
+}
+Most negative sentences not thus excluded will be counted twice: once as
+a prime (first member of a pair) and once as a target (second member).
+(The first/last sentence of a text and sentences just after/before a
+token of spurious negation will be counted only once, as a prime/target
+respectively.)  The corpus contains 598 target–prime pairs in the years
+1250–1349 (inclusive).  This date range constitutes the middle century
+of the change, when each of the three alternative surface patterns is
+approximately equal in incidence.  It thus will be the most fertile
+ground for the discernment of patterns, and will from the basis of the
+bulk of our analysis.
+
+\subsection{Two-atom model}
+\label{sec:two-atom-model}
+
+\begin{figure}
+    \centering
+    \input{figures/ne-not-fac.tikz}
+    \caption{Predictions of the two-atom model.}
+    \label{fig:two-atom}
+\end{figure}
+
+The two-atom model (the model espoused by Frisch) predicts that primes
+containing \emph{ne} alone will have some facilitatory effect on the use
+of \emph{ne} (whether alone or in combination with \emph{not}) in their
+targets; \emph{not} alone will behave similarly.  Since a token fo
+\emph{ne...not} contains on this model a complete instance of \emph{ne}
+and a complete instance of \emph{not}, it should have the same effect as
+\emph{ne} alone does on following \emph{ne}, and the same effect as
+\emph{not} alone on following \emph{not}.
+
+Figure~\ref{fig:two-atom} illustrates that this prediction is not borne
+out.  The two pairs of bars on the left illustrate the size of the
+persistence effect for \emph{ne} and \emph{not} alone, respectively.
+Taking the leftmost bar group as an example, after a sentence negated
+with \emph{ne} alone, the next negative has roughly a 90\% chance of
+containing \emph{ne}, and only roughly a 35\% chance of containing
+\emph{not}.\footnote{Following the model’s assignment of dual status,
+    \emph{ne...not} sentences are counted twice; for this reason the
+    percentages do not sum to 100\%.}  Under the model’s prediction, we
+expect the effect of \emph{ne...not} on following negators to be just as
+strong as the individual effects.  In other words, the right-hand green
+bar should be just as tall as the left-most one, and the right-hand
+orange bar should be as tall as the middle one, contrary to
+fact. % TODO: color names...
+
+\subsection{Three-atom model}
+\label{sec:three-atom-model}
+
+\begin{figure}
+    \centering
+    \input{figures/nnb-fac.tikz}
+    \caption{Predictions of the three-atom model.}
+    \label{fig:three-atom}
+\end{figure}
+
+If the three-atom model (espoused by Wallage) is correct, we expect each
+type of negation to facilitate itself, and not any of the other forms.
+This prediction is clearly borne out for \emph{not}: the orange bar
+corresponding to \emph{not} targets is highest in the \emph{not}-prime
+condition, and low for the other two primes.  On the other hand,
+\emph{ne} and \emph{ne...not} both cross-facilitate each other to a
+certain extent, which the model does not predict.  That is, in the
+left-most \emph{ne}-prime condition the purple bar is higher than the
+orange one (the latter reflecting an unprimed baseline given by
+\emph{not}).  The same is true of the green bar (\emph{ne}) in the
+right-most group (\emph{ne...not} primes).
+
+However, we can invoke another explanation of the cross-facilitation
+pattern, which makes the data on the whole more amenable to the
+three-atom model.  Specifically, \emph{not} has its origins as a
+negative adverb in Old English.  There is reason to believe that even in
+ME some tokens of \emph{not} are still adverbial, and not sentence
+negation.  Since adverbial \emph{not} triggers \emph{ne} via negative
+concord, these adverb tokens will masquerade as tokens of
+\emph{ne...not} sentence negation, distorting the counts.
+
+% TODO: why does the patch not help the two-atom model?  I think this is
+% because we would expect the patch to help with the
+% priming-to-a-too-small-degree of ne, but not of not.  But if we’re
+% mixing two different categories together, maybe the whole thing is not
+% coherent?
+
+\begin{figure}
+    \centering
+    \input{figures/patch.tikz}
+    \caption{Predictions of the three-atom model, after applying a correction for adverbial uses of \emph{ne...not} constructions.}
+    \label{fig:patch}
+\end{figure}
+
+After applying a correction derived from \textcite{Frisch1997}, we
+obtain the graph in Figure~\ref{fig:patch}.  The black marks indicate
+the original positions of the patched bars.\footnote{The other bars have
+also been moved because of the patch, since in this model the bars are
+constrained to sum to 100\%.}  As can be seen, the correction brings the
+data in closer line with the predictions of the three-atom model.
+
+\subsection{Further evidence against the two-atom model}
+\label{sec:furth-evid-against}
+
+\begin{figure}
+    \centering
+    \input{figures/nnb-fac-late.tikz}
+    \caption{Facilitation effects from 1350–1400.}
+    \label{fig:later-evid}
+\end{figure}
+
+Another piece of evidence in favor of the three-atom model comes from
+the later period of the change (1350–1400; N = 1617).  In
+Figure~\ref{fig:later-evid}, we see that \emph{ne} facilitates
+\emph{not} more strongly than \emph{ne ... not} does, which is never
+expected to happen on the two-atom model.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+The corpus persistence data presented here, interpreted as priming, are
+inconsistent with the two-atom model and provide tenuous support for the
+three-atom one.  It remains a subject of investigation how this fact
+fits into the total picture of evidence about the change, which must
+also include the evidence discussed by \textcite{Frisch1997} and
+\textcite{wallage08}.
+
+More broadly, the CRH is important because it provides a link between
+frequency data attested in historical corpora and the mental
+representations that underlie language and language change.  We would
+like to suggest that persistence data constitute another, independent
+source of linkage between these two domains.  The investigation of
+persistence evidence can support and refine the conclusions of
+quantitative studies of syntactic change.
+
+\printbibliography
+
+\end{document}
