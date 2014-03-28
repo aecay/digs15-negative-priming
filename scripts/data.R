@@ -5,7 +5,7 @@
 cleanNegData <- function(path = "queries/coding.cod.ooo") {
     library(stringr)
 
-    df <- df <- read.csv(path, sep = ":", header = FALSE)
+    df <- read.csv(path, sep = ":", header = FALSE)
     colnames(df) <- c("century", "decade", "unityear", "exclude",
                       "ne", "not", "clausetype", "never.posn", "not.posn",
                       "finite", "id")
