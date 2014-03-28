@@ -5,7 +5,7 @@
 library(ggplot2)
 library(plyr)
 
-library(tikzDevice)
+try(library(tikzDevice))
 
 options(tikzLualatexPackages = c("\\usepackage{tikz}\n",
             "\\usepackage[active,tightpage]{preview}\n",
@@ -20,7 +20,7 @@ options(tikzDefaultEngine = "luatex")
 
 estival.graph <- function (write = FALSE) {
     library(ggplot2)
-    library(tikzDevice)
+    # library(tikzDevice)
     estival <- read.csv("data/estival.csv")
 
     dodge <- position_dodge(width=.9)
@@ -46,6 +46,7 @@ estival.graph <- function (write = FALSE) {
 }
 
 three.lines.graph <- function(neg, write = FALSE) {
+    library(reshape2)
     neg.plot.data <- ddply(neg, .(year), summarize,
                            ne = sum(neg.type == "ne", na.rm = TRUE),
                            not = sum(neg.type == "not", na.rm = TRUE),
@@ -126,7 +127,7 @@ ne.not.fac <- function(df, pre = 1250, post = 1350,
 nnb.fac <- function(df, pre = 1250, post = 1350, write = FALSE,
                     file = "figures/nnb-fac", height = 2.5) {
     library(ggplot2)
-    library(reshape)
+    library(reshape2)
 
     df <- subset(df, year >= pre & year < post)
     plot.data <- ddply(df, .(prev.neg.type),
@@ -173,7 +174,7 @@ nnb.fac <- function(df, pre = 1250, post = 1350, write = FALSE,
 patch.graph <- function(df, pre = 1250, post = 1350, write = FALSE,
                         file = "figures/patch", height = 2.5) {
     library(ggplot2)
-    library(reshape)
+    library(reshape2)
 
     df.subs <- subset(df, year >= pre & year < post & !is.na(prev.neg.type))
 
