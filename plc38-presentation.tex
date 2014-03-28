@@ -140,7 +140,7 @@
     \xe
     % To generate this plot:
     % > neg <- cleanNegData("queries/coding.cod.ooo")
-    % > three.lines.graph(neg, write = TRUE)
+    % > three.lines.graph2(neg, write = TRUE)
     \begin{center}
         \includegraph{figures/three-lines2}
     \end{center}
@@ -188,7 +188,9 @@
 \begin{frame}
     \frametitle{Two analyses}
     \begin{multicols}{2}
+        % > nnb.fac.graph2(neg, write = TRUE)
         \includegraph[width=\linewidth]{figures/ne-not2}
+        % > patch.graph2(neg, write = TRUE)
         \includegraph[width=\linewidth]{figures/patch2}
     \end{multicols}
 \end{frame}
@@ -280,6 +282,7 @@
 
 \begin{frame}
     \frametitle{Results}
+    % > source("scripts/dosupp.R")
     \includegraph[width=\textwidth]{figures/do-results}
 \end{frame}
 

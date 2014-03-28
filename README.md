@@ -12,6 +12,8 @@ by [Aaron Ecay][aaron] and [Meredith Tamminga][meredith].
 
 ## Corpus data
 
+### Middle English negation
+
 In order to replicate the corpus portion of this analysis, you will need
 a copy of the Penn Parsed Corpus of Middle English ([PPCME2][ppcme]) and
 version 2.003.04 of the [CorpusSearch][corpussearch] program.
@@ -34,6 +36,14 @@ Once you have performed these two steps, you should run the
 `coding.cod.ooo` file, a copy of which is also included in this
 repository for the convenience of those who do not have access to the
 PPCME2.  This file is the input to the next stage.
+
+### *Do*-support
+
+The *do*-support code relies on the data file `do.out` in the `data`
+subdirectory of this repository.  (Please contact the authors if you are
+interested in the scripts which generate this file from the PPCEME and
+PCEEC).  The code for creating the priming graph is contained in the
+file `dosupp.R` in the `scripts` subdirectory.
 
 ## Analysis
 
