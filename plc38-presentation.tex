@@ -10,12 +10,14 @@
 
 \usetikzlibrary{calc}
 
+\usepackage{pifont}
+
 \newcommand{\includegraph}[2][]{\mode<beamer>{\includegraphics[#1]{#2}}
     \mode<handout>{\includegraphics[#1]{#2}}}
 
 \addbibresource{biblio.bib}
 
-\title{Persistence as a diagnostic of grammatical status: Two case studies}
+\title{Priming as a diagnostic of grammatical status: Two case studies}
 \author{Meredith Tamminga and Aaron Ecay}
 \institute{University of Pennsylvania}
 \date{Mar.\ 29, 2014 \\\vspace{0.5em} Penn Linguistics Conference 38}
@@ -57,22 +59,29 @@
     \tableofcontents{}
 \end{frame}
 
-\section{Background on Persistence}
+\section{Background on priming}
 
 \subsection*{foo}
 
-\begin{frame}{The persistence effect}
-	\begin{itemize}
-       		\item \textbf{Persistence:} the tendency to repeat the same linguistic option again in natural speech -- conversational counterpart of priming
-		\item Extensive structural priming
-                  literature \parencite[beginning with][]{Bock:1986}
-                  demonstrates that syntactic structures can be primed
-			\end{itemize}
+\begin{frame}{Priming}
+    \begin{itemize}
+      \item \textbf{Priming:} the tendency to reuse a recently
+        encountered linguistic option
+      \item Extensive structural priming
+        literature \parencite[beginning with][]{Bock:1986}
+        demonstrates that syntactic structures can be primed
+      \item Example:
+        \begin{itemize}
+          \item \textbf{Prime:} I gave the children candy
+          \item[\ding{51}] I gave the dog treats
+          \item[\ding{55}] I gave treats to the dog
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{The reflection of structural identity}
+\begin{frame}{Priming reflects structural identity}
 	\begin{itemize}
-          \item \textcite{Estival:1985}: different types of passives (lexical vs.\ transformational) each facilitate themselves but not each other
+          \item \textcite{Estival:1985}: different types of passives (lexical vs.\ transformational) each prime themselves but not each other
           \item The structural distinction this reflects is maintained in modern syntactic accounts \parencite[e.g.][]{Embick:2004}
 	\end{itemize}
         % Code for this graph:
@@ -83,10 +92,10 @@
 \end{frame}
 
 
-\begin{frame}{The reflection of structural identity} % priming?
+\begin{frame}{Priming reflects structural identity}
 	\begin{itemize}
           \item \textcite{Bock:1990}: Infinitival purpose clauses with
-            “to” do not facilitate prepositional datives with “to”
+            “to” do not prime prepositional datives with “to”
             \begin{itemize}
               \item I brought a book to study
               \item I brought a book to Stella
@@ -97,16 +106,15 @@
 \end{frame}
 
 
-\begin{frame}{The reflection of structural identity}
+\begin{frame}{Priming reflects structural identity}
 	\begin{itemize}
-		\item Persistence can be a useful dependent variable for its reflection of underlying structures: repetition facilitation reveals sameness
+		\item Priming can be a useful dependent variable for its reflection of underlying structures: repetition reveals sameness
 		\item “If the processing of a stimulus affects the processing of another stimulus, then the two stimuli must be related [...] if the relationship between the two stimuli is syntactic, then we can use this relationship as a way of understanding what syntactic information is represented” \parencite[490]{Branigan:1995}
-		\item Linking hypothesis: persistence effects in written historical data reflect priming effects in language production at the time
+		\item Linking hypothesis: priming effects in written
+                  historical data reflect structural identity in
+                  language production at the time
 	\end{itemize}
 \end{frame}
-
-
-
 
 \section{Case one: Negation}
 
@@ -144,6 +152,7 @@
 \begin{frame}{Two analyses}
     \begin{multicols}{2}
         \begin{center}
+            \textcite{Frisch1997}
             \begin{tikzpicture}[scale=3]
                 \node[circle, draw, minimum size=0.6in](ne-atom) at (1,1) {\textsc{ne}};
                 \node[circle, draw, minimum size=0.6in](not-atom) at (1,0) {\textsc{not}};
@@ -159,6 +168,7 @@
         \end{center}
 
         \begin{center}
+            \textcite{wallage08}
             \begin{tikzpicture}[scale=3]
                 \node[circle, draw, minimum size=0.55in](ne-atom) at (1,1) {\textsc{ne}};
                 \node[circle, draw, minimum size=0.55in](ne-not-atom) at (1,0.5) {\textsc{ne-not}};
@@ -212,7 +222,7 @@
     \end{itemize}
     \includegraphics[width=\textwidth]{static-figures/do-aff}
     \begin{itemize}
-      \item If this is so, it should be visible in persistence data
+      \item If this is so, it should be visible in priming data
     \end{itemize}
 \end{frame}
 
@@ -220,7 +230,7 @@
 \label{sec:predictions}
 
 \begin{frame}
-    \frametitle{Persistence predictions for \emph{do}}
+    \frametitle{Priming predictions for \emph{do}}
     \begin{itemize}
       \item The intermediate (low-\emph{do}) grammar can produce surface
         \emph{do} in both affirmative declarative contexts and modern
@@ -237,17 +247,14 @@
 \begin{frame}
     \begin{center}
         \begin{tikzpicture}[xscale=1.55]
-            \node[circle,draw,minimum size=0.75in] (v1) at (-3.5,4.5)
-            {Intermed.}; \node[circle,draw,minimum size=0.75in] (v2) at
-            (0.5,4.5) {Intermed.};
+            \node[circle,draw,minimum size=0.75in] (v1) at (-3.5,4.5) {Intermed.};
+            \node[circle,draw,minimum size=0.75in] (v2) at (0.5,4.5) {Intermed.};
 
-            \node[circle,draw,minimum size=0.75in] (v4) at (-3.5,2)
-            {Intermed.}; \node[circle,draw,minimum size=0.75in] (v3) at
-            (0.5,2) {Intermed.};
+            \node[circle,draw,minimum size=0.75in,visible on=<2>] (v4) at (-3.5,2) {Intermed.};
+            \node[circle,draw,minimum size=0.75in,visible on=<2>] (v3) at (0.5,2) {Intermed.};
 
-            \node[circle,draw,minimum size=0.75in] (v5) at (-3.5,-0.5)
-            {Modern}; \node[circle,draw,minimum size=0.75in] (v6) at
-            (0.5,-0.5) {Modern};
+            \node[circle,draw,minimum size=0.75in] (v5) at (-3.5,-0.5) {Modern};
+            \node[circle,draw,minimum size=0.75in] (v6) at (0.5,-0.5) {Modern};
 
             \draw ($(v4.north west)+(-0.1in,0.15in)$) rectangle ($(v5.south east)+(0.1in,-0.15in)$);
             \draw ($(v3.north west)+(-0.1in,0.15in)$) rectangle ($(v6.south east)+(0.1in,-0.15in)$);
@@ -255,11 +262,15 @@
             \draw ($(v1.north west)+(-0.1in,0.15in)$) rectangle ($(v1.south east)+(0.1in,-0.15in)$);
 
             \node[draw] at (-1.5,5) {Affirmative declarative};
-            \node[draw] at (-1.5,0.5) {Modern contexts}; \draw [-latex]
-            (v1) edge (v2); \draw [-latex] (v1) edge (v3); \draw
-            [-latex] (v4) edge (v2); \draw [-latex] (v4) edge (v3);
-            \draw [-latex] (v5) edge (v6); \node at (-3.5,6)
-            {\textbf{Prime}}; \node at (0.5,6) {\textbf{Target}};
+            \node[draw] at (-1.5,0.5) {Modern contexts};
+            \draw [->,>=triangle 45] (v1) edge (v2);
+            \draw [->,>=triangle 45,visible on=<2>] (v1) edge (v3);
+            \draw [->,>=triangle 45,visible on=<2>] (v4) edge (v2);
+            \draw [->,>=triangle 45,visible on=<2>] (v4) edge (v3);
+            \draw [->,>=triangle 45] (v5) edge (v6);
+
+            \node at (-3.5,6) {\textbf{Prime}};
+            \node at (0.5,6) {\textbf{Target}};
         \end{tikzpicture}
     \end{center}
 \end{frame}
@@ -294,13 +305,26 @@
         provides a link between frequency data attested in historical
         corpora and the mental representations that underlie language
         and language change
-      \item We would like to suggest that persistence data constitute
+      \item We would like to suggest that priming data constitute
         another, independent source of linkage between these two domains
         \begin{itemize}
           \item As has been shown in our two case studies
         \end{itemize}
-      \item The investigation of persistence evidence can support and refine
+      \item The investigation of priming evidence can support and refine
         the conclusions of quantitative studies of syntactic change
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusions}
+    \begin{itemize}
+      \item Priming research has been deployed in studies of spoken
+        corpora to answer questions about grammatical variation in
+        contemporary American English
+      \item There is also a large and growing experimental literature on
+        structural priming, to which this work creates obvious bridges
+      \item We would love to see more linguists applying priming
+        methodology to their favorite variable!
     \end{itemize}
 \end{frame}
 

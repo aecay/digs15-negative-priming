@@ -1,4 +1,3 @@
-
 library(ggplot2)
 library(plyr)
 library(binom)
@@ -110,30 +109,32 @@ anydo.env.avgs <- within(anydo.env.avgs, {
     base.upper <- ci$upper
     base.lower <- ci$lower
     rm(ci)
-})
 
-# target average rates
-aff.avgs <- subset(anydo.env.avgs, type == "Affirmative declarative")
+    type <- revalue(type, c("Aff. decl." = "Aff. decl. target",
+                            "Modern" = "Modern target"))
+    prev.type <- revalue(prev.type, c("Aff. decl." = "Aff. decl. prime",
+                                      "Modern" = "Modern prime"))
+})
 
 plot <- ggplot(subset(anydo.env.avgs, !is.na(type) & !is.na(prev.type)),
                aes(period, baseline)) +
-    geom_errorbar(aes(ymin = base.lower, ymax = base.upper, color = prev.do), width=.05) +
+    geom_errorbar(aes(ymin = base.lower, ymax = base.upper, color = prev.do),
+                  width = .05, size = 2, position = position_dodge(width = 0.5)) +
     coord_cartesian(ylim = c(-0.05,0.8)) +
     scale_y_continuous(breaks = c(0, 0.25, 0.5, 0.75)) +
     facet_grid(type ~ prev.type) +
-    ggtitle("Primes (rows) and targets (columns)") +
     xlab("Period") +
     ylab("Proportion do")
 
 cairo_pdf("figures/do-results.pdf", width = 6, height = 4, family = "Linux Biolinum")
 print(plot +
-      geom_point(aes(color = prev.do)) +
+      geom_point(aes(color = prev.do), size = 5, position = position_dodge(width = 0.5)) +
       scale_color_brewer("Primed?", labels = c("0" = "no", "1" = "yes"), palette = "Set2"))
 dev.off()
 
 cairo_pdf("figures/do-results-handout.pdf", width = 6, height = 4, family = "Linux Biolinum")
 print(plot +
-      geom_point(aes(shape = prev.do)) +
+      geom_point(aes(shape = prev.do), size = 3) +
       scale_color_manual(values = c("black","black")) +
-      scale_shape_discrete("Primed?")
+      scale_shape_discrete("Primed?"))
 dev.off()
