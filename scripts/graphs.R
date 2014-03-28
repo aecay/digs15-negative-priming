@@ -78,7 +78,8 @@ three.lines.graph <- function(neg, write = FALSE) {
 }
 
 ne.not.fac <- function(df, pre = 1250, post = 1350,
-                       write = FALSE, file = "figures/ne-not-fac") {
+                       write = FALSE, file = "figures/ne-not-fac",
+                       confint = TRUE) {
     library(ggplot2)
     library(reshape2)
 
@@ -95,6 +96,17 @@ ne.not.fac <- function(df, pre = 1250, post = 1350,
                            measure.vars = c("pct.ne", "pct.not"))
     plot.data.melt <- subset(plot.data.melt, !is.na(prev.neg.type))
 
+    ns <- plot.data$n
+    names(ns) <- plot.data$prev.neg.type
+    plot.data.melt <- within(plot.data.melt, {
+        ci <- binom.confint(value * ns[prev.neg.type],
+                            ns[prev.neg.type],
+                            methods = "exact")
+        upper <- ci$upper
+        lower <- ci$lower
+        rm(ci)
+    })
+
     plt <- ggplot(aes(x = prev.neg.type, y = value, fill = variable), data = plot.data.melt) +
         geom_bar(stat = "identity", position = "dodge") +
         ggtitle("Facilitation of \\emph{ne} and \\emph{not}") +
@@ -107,6 +119,12 @@ ne.not.fac <- function(df, pre = 1250, post = 1350,
                          labels = c("ne alone", "ne...not", "not alone")) +
         guides(fill = guide_legend("Token")) +
         theme(panel.grid.major.x = element_blank())
+
+    if (confint) {
+        plt <- plt + geom_pointrange(aes(y = value, ymin = lower, ymax = upper),
+                                     position = position_dodge(width = 0.9),
+                                     color = "black", show_guide = FALSE)
+    }
 
     if (write) {
         tikz(paste0(file, ".tikz"), width = 4, height = 2.5)
@@ -125,7 +143,8 @@ ne.not.fac <- function(df, pre = 1250, post = 1350,
 }
 
 nnb.fac <- function(df, pre = 1250, post = 1350, write = FALSE,
-                    file = "figures/nnb-fac", height = 2.5) {
+                    file = "figures/nnb-fac", height = 2.5,
+                    confint = FALSE) {
     library(ggplot2)
     library(reshape2)
 
@@ -144,6 +163,18 @@ nnb.fac <- function(df, pre = 1250, post = 1350, write = FALSE,
                            measure.vars = c("pct.ne", "pct.not", "pct.both"))
     plot.data.melt <- subset(plot.data.melt, !is.na(prev.neg.type))
 
+    ns <- plot.data$n
+    names(ns) <- plot.data$prev.neg.type
+    plot.data.melt <- within(plot.data.melt, {
+        ci <- binom.confint(value * ns[prev.neg.type],
+                            ns[prev.neg.type],
+                            methods = "exact")
+        upper <- ci$upper
+        lower <- ci$lower
+        rm(ci)
+    })
+
+
     plt <- ggplot(aes(x = prev.neg.type, y = value, fill = variable), data = plot.data.melt) +
         geom_bar(stat = "identity", position = "dodge") +
         ggtitle("Facilitation of \\emph{ne} and \\emph{not}") +
@@ -154,6 +185,12 @@ nnb.fac <- function(df, pre = 1250, post = 1350, write = FALSE,
                          labels = c("ne alone", "not alone", "ne...not")) +
         guides(fill = guide_legend("Token")) +
         theme(panel.grid.major.x = element_blank())
+
+    if (confint) {
+        plt <- plt + geom_pointrange(aes(y = value, ymin = lower, ymax = upper),
+                                     position = position_dodge(width = 0.9),
+                                     color = "black", show_guide = FALSE)
+    }
 
     if (write) {
         tikz(paste0(file, ".tikz"), width = 4, height = height)
@@ -172,7 +209,8 @@ nnb.fac <- function(df, pre = 1250, post = 1350, write = FALSE,
 }
 
 patch.graph <- function(df, pre = 1250, post = 1350, write = FALSE,
-                        file = "figures/patch", height = 2.5) {
+                        file = "figures/patch", height = 2.5,
+                        confint = FALSE, patch.lines = TRUE) {
     library(ggplot2)
     library(reshape2)
 
@@ -242,6 +280,17 @@ patch.graph <- function(df, pre = 1250, post = 1350, write = FALSE,
                         prev.neg.type == "both" & variable == "pct.ne"),]$adj <-
                             prev.both.to.ne
 
+    ns <- plot.data$n
+    names(ns) <- plot.data$prev.neg.type
+    plot.data.melt <- within(plot.data.melt, {
+        ci <- binom.confint(floor(value * ns[prev.neg.type]),
+                            floor(ns[prev.neg.type]),
+                            methods = "exact")
+        upper <- ci$upper
+        lower <- ci$lower
+        rm(ci)
+    })
+
     plt <- ggplot(aes(x = prev.neg.type, y = value, fill = variable),
                   data = plot.data.melt) +
         geom_bar(stat = "identity", position = "dodge") +
@@ -252,9 +301,18 @@ patch.graph <- function(df, pre = 1250, post = 1350, write = FALSE,
         scale_x_discrete(limits = c("ne", "not", "both"),
                          labels = c("ne alone", "not alone", "ne...not")) +
         guides(fill = guide_legend("Token")) +
-        theme(panel.grid.major.x = element_blank()) +
-        geom_errorbar(aes(y = adj, ymin = adj, ymax=adj),
-                      position = "dodge")
+        theme(panel.grid.major.x = element_blank())
+
+    if (patch.lines) {
+        plt <- plt + geom_errorbar(aes(y = adj, ymin = adj, ymax=adj),
+                                   position = "dodge")
+    }
+
+    if (confint) {
+        plt <- plt + geom_pointrange(aes(y = value, ymin = lower, ymax = upper),
+                                     position = position_dodge(width = 0.9),
+                                     color = "black", show_guide = FALSE)
+    }
 
     if (write) {
         tikz(paste0(file, ".tikz"), width = 4, height = height)
