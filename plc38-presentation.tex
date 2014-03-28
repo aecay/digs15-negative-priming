@@ -8,13 +8,15 @@
 \usepackage{amssymb}
 % \bibliographystyle{linquiry2}
 
-\newcommand{\includegraph}[1]{\mode<beamer>{\input{#1.tikz}}
-    \mode<handout>{\input{#1-handout.tikz}}}
+\usetikzlibrary{calc}
+
+\newcommand{\includegraph}[2][]{\mode<beamer>{\includegraphics[#1]{#2}}
+    \mode<handout>{\includegraphics[#1]{#2}}}
 
 \addbibresource{biblio.bib}
 
 \title{Persistence as a diagnostic of grammatical status: Two case studies}
-\author{Aaron Ecay and Meredith Tamminga}
+\author{Meredith Tamminga and Aaron Ecay}
 \institute{University of Pennsylvania}
 \date{Mar.\ 29, 2014 \\\vspace{0.5em} Penn Linguistics Conference 38}
 
@@ -74,7 +76,7 @@
           \item The structural distinction this reflects is maintained in modern syntactic accounts \parencite[e.g.][]{Embick:2004}
 	\end{itemize}
         % Code for this graph:
-        % > estival.graph(write = TRUE)
+        % > estival.graph2(write = TRUE)
         \begin{center}
             \includegraph{figures/estival}
         \end{center}
@@ -132,164 +134,15 @@
     % > neg <- cleanNegData("queries/coding.cod.ooo")
     % > three.lines.graph(neg, write = TRUE)
     \begin{center}
-        \includegraph{figures/three-lines}
+        \includegraph{figures/three-lines2}
     \end{center}
 \end{frame}
 
-\subsection{Competing Analyses}
+\subsection{Two analyses}
 \label{sec:analyses}
 
-\begin{frame}{Frisch (1997)}
-    \begin{itemize}
-      \item \Textcite{Frisch1997} analyzes this change to be due to
-        competition between two grammars
-        \begin{itemize}
-          \item One grammar contains an entry for \emph{ne} as the head of NegP
-          \item One grammar contains \emph{not} as the specifier of NegP
-        \end{itemize}
-      \item When both “grammars” (really, lexical entries) are
-        simultaneously activated, \emph{ne ... not} sentences result
-    \end{itemize}
-
-    \begin{multicols}{3}
-        \small
-        \Tree [.TP T [.NegP [.Neg \emph{ne}\textsubscript{[+Neg]} ]
-        [.VP \edge[roof]; {...} ] ] ]
-
-        \Tree [.TP T [.NegP [.XP \emph{not}\textsubscript{[+Neg]} ]
-        [.Neg$'$ [.Neg \emph{ne}\textsubscript{[+Neg]}
-        ] [.VP \edge[roof]; {...} ] ] ] ]
-
-        \Tree [.TP T [.NegP [.XP \emph{not}\textsubscript{[+Neg]} ]
-        [.Neg$'$ [.Neg $\varnothing$ ]
-        [.VP \edge[roof]; {...} ] ] ] ]
-    \end{multicols}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Wallage (2008)}
-    \begin{itemize}
-      \item \Textcite{wallage08} analyzes the change in a different way
-      \item Jespersen’s Cycle: \emph{ne}, \emph{ne ... not}, and
-        \emph{not} are each stages of the cycle
-      \item In \emph{ne ... not} constructions, \emph{ne} does not have
-        negative force (cf.~negative concord)
-    \end{itemize}
-
-    \begin{multicols}{3}
-        \small
-
-        \Tree [.TP T [.NegP [.Neg \emph{ne}\textsubscript{[+Neg]} ]
-        [.VP \edge[roof]; {...} ] ] ]
-
-        \begin{tikzpicture}{every tree node/.style={align=center,anchor=north}}
-            \Tree [.TP T [.NegP [.XP
-            \node(not){\emph{not}{\textsubscript{[+Neg]}}};
-            ] [.Neg$'$ [.Neg \node[visible on=<2>](ne){\emph{ne}};
-            ] [.VP \edge[roof]; {...} ] ] ] ]
-
-            \draw[->,visible on=<2>] (not) to[out=-90, in=180] (ne);
-        \end{tikzpicture}
-
-        \Tree [.TP T [.NegP [.XP
-        {\emph{not}{\textsubscript{[+Neg]}}} ]
-        [.Neg$'$ [.Neg $\varnothing$ ] [.VP \edge[roof]; {...} ] ] ] ]
-    \end{multicols}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Disagreement}
-    \begin{itemize}
-      \item There is a fundamental disagreement between Frisch and
-        Wallage about the grammatical structures at play in the change from
-        \emph{ne} to \emph{not}
-      \item This can be summarized by the question: are there two atomic
-        units (\emph{ne} and \emph{not}) interacting during this change,
-        or three (those two plus \emph{ne ... not})?
-      \item We propose that priming data can help answer this question
-    \end{itemize}
-\end{frame}
-
-\subsection{Results}
-
-\begin{frame}{Dataset}
-    \begin{itemize}
-      \item The data used in this presentation come from the
-        PPCME2 \parencite{Kroch2001}
-      \item We assembled a corpus of attestations of consecutive
-        negative declarative clauses
-        \begin{itemize}
-          \item can be at any distance (must be in the same text)
-          \item cannot have another negated clause intervening
-            % TODO: I don’t think we exclude constituent negation yet,
-            % if indeed we should.
-        \end{itemize}
-      \item The resulting corpus contains 598 target–prime pairs from
-        the years 1250–1350, the middle century of the change and the
-        focus of the bulk of our analysis
-        % To calculate N:
-        % > with(subset(neg, year >= 1250 & year < 1350), sum(!is.na(prev.neg.type)))
-    \end{itemize}
-\end{frame}
-
-% \begin{frame}<handout>
-%     \frametitle{Technical details}
-%     Technical details:
-%     \begin{itemize}
-%         % TODO: update to latest files
-%       \item The most working versions of the corpus files as of June 20,
-%         2012 were used
-%       \item The text of Layamon’s \emph{Brut} (added to the corpus since
-%         publication) was not included
-%     \end{itemize}
-
-%     For exact details of queries used etc., see the code at
-%     \url{https://github.com/aecay/digs15-negative-priming}
-% \end{frame}
-
-\begin{frame}
-    \frametitle{Two-atom prediction}
-    \begin{itemize}
-      \item If the two-atom model is correct, then we expect that uses
-        of \emph{ne} alone will facilitate following \emph{ne} (alone or
-        with \emph{not}), and similarly for \emph{not} alone
-      \item We also predict that tokens of both negators together will
-        have the same effect as \emph{ne} alone on following use of
-        \emph{ne}, and similarly for \emph{not}
-    \end{itemize}
-    \begin{center}
-        \begin{tikzpicture}[scale=3]
-            \node[circle, draw, minimum size=0.6in](ne-atom) at (1,1) {\textsc{ne}};
-            \node[circle, draw, minimum size=0.6in](not-atom) at (1,0) {\textsc{not}};
-            \node[align=left](ne-surface) at (0,1) {\emph{ne}};
-            \node[align=left](ne-not-surface) at (0,0.5) {\emph{ne ... not}};
-            \node[align=left](not-surface) at (0,0) {\emph{not}};
-
-            \draw[<-,>=triangle 45] (ne-atom) -- (ne-surface);
-            \draw[<-,>=triangle 45] (ne-atom) -- (ne-not-surface);
-            \draw[<-,>=triangle 45] (not-atom) -- (not-surface);
-            \draw[<-,>=triangle 45] (not-atom) -- (ne-not-surface);
-        \end{tikzpicture}
-    \end{center}
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Two-atom prediction: no}
-    \begin{itemize}
-      \item This prediction is not borne out completely
-    \end{itemize}
-
-    % TODO: can haz p-values?
-
-    \begin{overprint}
-        \onslide<1 | handout:1 >
-        % To generate this graph:
-        % > ne.not.fac(neg, write = TRUE)
-        \begin{center}
-            \includegraph{figures/ne-not-fac}
-        \end{center}
-        \onslide<2 | handout:2 >
+\begin{frame}{Two analyses}
+    \begin{multicols}{2}
         \begin{center}
             \begin{tikzpicture}[scale=3]
                 \node[circle, draw, minimum size=0.6in](ne-atom) at (1,1) {\textsc{ne}};
@@ -299,91 +152,35 @@
                 \node[align=left](not-surface) at (0,0) {\emph{not}};
 
                 \draw[<-,>=triangle 45] (ne-atom) -- (ne-surface);
-                \draw[<-,>=triangle 45, dashed] (ne-atom) -- (ne-not-surface);
+                \draw[<-,>=triangle 45] (ne-atom) -- (ne-not-surface);
                 \draw[<-,>=triangle 45] (not-atom) -- (not-surface);
-                \draw[<-,>=triangle 45,dashed]
-                (not-atom) -- (ne-not-surface);
+                \draw[<-,>=triangle 45] (not-atom) -- (ne-not-surface);
             \end{tikzpicture}
         \end{center}
-    \end{overprint}
+
+        \begin{center}
+            \begin{tikzpicture}[scale=3]
+                \node[circle, draw, minimum size=0.55in](ne-atom) at (1,1) {\textsc{ne}};
+                \node[circle, draw, minimum size=0.55in](ne-not-atom) at (1,0.5) {\textsc{ne-not}};
+                \node[circle, draw, minimum size=0.55in](not-atom) at (1,0) {\textsc{not}};
+                \node[align=left](ne-surface) at (0,1) {\emph{ne}};
+                \node[align=left](ne-not-surface) at (0,0.5) {\emph{ne ... not}};
+                \node[align=left](not-surface) at (0,0) {\emph{not}};
+
+                \draw[<-,>=triangle 45] (ne-atom) -- (ne-surface);
+                \draw[<-,>=triangle 45] (ne-not-atom) -- (ne-not-surface);
+                \draw[<-,>=triangle 45] (not-atom) -- (not-surface);
+            \end{tikzpicture}
+        \end{center}
+    \end{multicols}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Three-atom prediction}
-    \begin{itemize}
-      \item If the three-atom model is correct, then we predict that
-        each kind of negation should facilitate itself, and not any of the
-        other forms.
-    \end{itemize}
-
-    \begin{center}
-        \begin{tikzpicture}[scale=3]
-            \node[circle, draw, minimum size=0.55in](ne-atom) at (1,1) {\textsc{ne}};
-            \node[circle, draw, minimum size=0.55in](ne-not-atom) at (1,0.5) {\textsc{ne-not}};
-            \node[circle, draw, minimum size=0.55in](not-atom) at (1,0) {\textsc{not}};
-            \node[align=left](ne-surface) at (0,1) {\emph{ne}};
-            \node[align=left](ne-not-surface) at (0,0.5) {\emph{ne ... not}};
-            \node[align=left](not-surface) at (0,0) {\emph{not}};
-
-            \draw[<-,>=triangle 45] (ne-atom) -- (ne-surface);
-            \draw[<-,>=triangle 45] (ne-not-atom) -- (ne-not-surface);
-            \draw[<-,>=triangle 45] (not-atom) -- (not-surface);
-        \end{tikzpicture}
-    \end{center}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Three-atom prediction: yes}
-    \begin{overprint}
-        \onslide<1 | handout:1 >
-        \begin{itemize}
-          \item This prediction is borne out
-        \end{itemize}
-        \onslide<2 | handout:1 >
-        \begin{itemize}
-          \item For \emph{not}, the prediction is clearly fulfilled:
-            \emph{not} facilitates itself, and the other two types of
-            negation have equal, low, rates of \emph{not}
-        \end{itemize}
-        \onslide<3 | handout:1 >
-        \begin{itemize}
-          \item On the other hand, \emph{ne} and \emph{ne ... not} both
-            cross-facilitate each other to a certain extent, which the
-            three-atom model does not predict
-        \end{itemize}
-        \onslide<4 | handout:1 >
-        \begin{itemize}
-          \item We construct a correction for adverbial uses of
-            \emph{not}, which brings the data in line with the model’s
-            predictions
-        \end{itemize}
-    \end{overprint}
-
-    % TODO: can haz p-values?
-
-    \begin{overprint}
-        \onslide<1-4 | handout:2 >
-        % To generate this graph:
-        % > nnb.fac(neg, write = TRUE)
-        \includegraph{figures/patch}
-    \end{overprint}
-\end{frame}
-
-\subsection{Conclusions}
-\label{sec:conclusions}
-
-\begin{frame}
-    \frametitle{Conclusions}
-    \begin{itemize}
-      \item The corpus persistence data presented here, interpreted as
-        priming, are inconsistent with the two-atom model and provide
-        tenuous support for the three-atom one
-
-      \item It remains a subject of investigation how this fact fits
-        into the total picture of evidence about the change, which must
-        also include the quantitative evidence discussed by
-        \textcite{Frisch1997} and \textcite{wallage08}
-    \end{itemize}
+    \frametitle{Two analyses}
+    \begin{multicols}{2}
+        \includegraph[width=\linewidth]{figures/ne-not2}
+        \includegraph[width=\linewidth]{figures/patch2}
+    \end{multicols}
 \end{frame}
 
 \section{Case two: \emph{do}-support}
@@ -401,8 +198,8 @@
       \item During the course of this change there was a period when
         \emph{do} was used in (non-emphatic) affirmative declaratives,
         which is banned in present-day English
-      \item (insert ellegard-like graph here) % TODO
     \end{itemize}
+    \includegraphics[width=\textwidth]{static-figures/do-all}
 \end{frame}
 
 \begin{frame}
@@ -410,11 +207,61 @@
     \begin{itemize}
       \item \textcite{Ecay2012a} proposed that the \emph{do} found in
         affirmative declaratives is distinct from the modern type of
-        \emph{do}, and functions in early EME as a marker of argument
-        structure
-      \item (insert one of my graphs here)
+        \emph{do}, is merged lower than T, and functions in early EME as
+        a marker of argument structure
+    \end{itemize}
+    \includegraphics[width=\textwidth]{static-figures/do-aff}
+    \begin{itemize}
       \item If this is so, it should be visible in persistence data
     \end{itemize}
+\end{frame}
+
+\subsection{Predictions}
+\label{sec:predictions}
+
+\begin{frame}
+    \frametitle{Persistence predictions for \emph{do}}
+    \begin{itemize}
+      \item The intermediate (low-\emph{do}) grammar can produce surface
+        \emph{do} in both affirmative declarative contexts and modern
+        \emph{do}-support contexts
+      \item The modern (high-\emph{do}) grammar can produce surface
+        \emph{do} only in the modern \emph{do}-support contexts
+      \item Thus, three types of grammatical objects: affirmative
+        declarative produced by intermediate grammar, modern-type do
+        produced by intermediate grammar, and modern-type do produced by
+        modern grammar
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \begin{tikzpicture}[xscale=1.55]
+            \node[circle,draw,minimum size=0.75in] (v1) at (-3.5,4.5)
+            {Intermed.}; \node[circle,draw,minimum size=0.75in] (v2) at
+            (0.5,4.5) {Intermed.};
+
+            \node[circle,draw,minimum size=0.75in] (v4) at (-3.5,2)
+            {Intermed.}; \node[circle,draw,minimum size=0.75in] (v3) at
+            (0.5,2) {Intermed.};
+
+            \node[circle,draw,minimum size=0.75in] (v5) at (-3.5,-0.5)
+            {Modern}; \node[circle,draw,minimum size=0.75in] (v6) at
+            (0.5,-0.5) {Modern};
+
+            \draw ($(v4.north west)+(-0.1in,0.15in)$) rectangle ($(v5.south east)+(0.1in,-0.15in)$);
+            \draw ($(v3.north west)+(-0.1in,0.15in)$) rectangle ($(v6.south east)+(0.1in,-0.15in)$);
+            \draw ($(v2.north west)+(-0.1in,0.15in)$) rectangle ($(v2.south east)+(0.1in,-0.15in)$);
+            \draw ($(v1.north west)+(-0.1in,0.15in)$) rectangle ($(v1.south east)+(0.1in,-0.15in)$);
+
+            \node[draw] at (-1.5,5) {Affirmative declarative};
+            \node[draw] at (-1.5,0.5) {Modern contexts}; \draw [-latex]
+            (v1) edge (v2); \draw [-latex] (v1) edge (v3); \draw
+            [-latex] (v4) edge (v2); \draw [-latex] (v4) edge (v3);
+            \draw [-latex] (v5) edge (v6); \node at (-3.5,6)
+            {\textbf{Prime}}; \node at (0.5,6) {\textbf{Target}};
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \subsection{Results}
@@ -422,18 +269,21 @@
 
 \begin{frame}
     \frametitle{Results}
-    Lalala, aren’t they awesome.
+    \includegraph[width=\textwidth]{figures/do-results}
 \end{frame}
 
-\subsection{Conclusions}
-\label{sec:conclusions-do}
-
-\begin{frame}
-    \frametitle{Conclusions}
-    More awesomeness.
+\begin{frame}<handout>
+    \frametitle{Results}
+    \begin{itemize}
+      \item Affirmative declaratives always prime each other, as expected
+      \item Modern environments prime each other more strongly over
+        time, as disguised affirmative declaratives disappear
+      \item Cross-priming lessens over time, also related to the
+        disappearance of disguised affirmative declaratives
+    \end{itemize}
 \end{frame}
 
-\section{Broad Conclusions}
+\section{Conclusions}
 \label{sec:conclusion}
 
 \subsection*{foo}
