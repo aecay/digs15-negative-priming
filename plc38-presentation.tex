@@ -10,10 +10,8 @@
 
 \usetikzlibrary{calc}
 
-\usepackage{pifont}
-
 \newcommand{\includegraph}[2][]{\mode<beamer>{\includegraphics[#1]{#2}}
-    \mode<handout>{\includegraphics[#1]{#2}}}
+    \mode<handout>{\includegraphics[#1]{#2-handout}}}
 
 \addbibresource{biblio.bib}
 
@@ -28,7 +26,7 @@
     \titlepage
 \end{frame}
 
-\section{Introduction}
+\section*{Introduction}
 
 \subsection*{foo}
 
@@ -73,8 +71,8 @@
       \item Example:
         \begin{itemize}
           \item \textbf{Prime:} I gave the children candy
-          \item[\ding{51}] I gave the dog treats
-          \item[\ding{55}] I gave treats to the dog
+          \item[$\Uparrow$] I gave the dog treats
+          \item[$\Downarrow$] I gave treats to the dog
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -186,7 +184,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Two analyses}
+    \frametitle{Results (PPCME2)}
     \begin{multicols}{2}
         % > nnb.fac.graph2(neg, write = TRUE)
         \includegraph[width=\linewidth]{figures/ne-not2}
@@ -235,14 +233,15 @@
     \frametitle{Priming predictions for \emph{do}}
     \begin{itemize}
       \item The intermediate (low-\emph{do}) grammar can produce surface
-        \emph{do} in both affirmative declarative contexts and modern
-        \emph{do}-support contexts
+        \emph{do} in affirmative declarative contexts
+      \item It can \textbf{also} do so in modern \emph{do}-support
+        contexts (with external argument)
       \item The modern (high-\emph{do}) grammar can produce surface
         \emph{do} only in the modern \emph{do}-support contexts
-      \item Thus, three types of grammatical objects: affirmative
-        declarative produced by intermediate grammar, modern-type do
-        produced by intermediate grammar, and modern-type do produced by
-        modern grammar
+      % \item Thus, three types of grammatical objects: affirmative
+      %   declarative produced by intermediate grammar, modern-type do
+      %   produced by intermediate grammar, and modern-type do produced by
+      %   modern grammar
     \end{itemize}
 \end{frame}
 
@@ -287,7 +286,7 @@
 \end{frame}
 
 \begin{frame}<handout>
-    \frametitle{Results}
+    \frametitle{Results (PPCEME + PCEEC)}
     \begin{itemize}
       \item Affirmative declaratives always prime each other, as expected
       \item Modern environments prime each other more strongly over
@@ -323,11 +322,11 @@
     \begin{itemize}
       \item Priming research has been deployed in studies of spoken
         corpora to answer questions about grammatical variation in
-        contemporary American English
+        contemporary American English and Romance languages
       \item There is also a large and growing experimental literature on
         structural priming, to which this work creates obvious bridges
-      \item We would love to see more linguists applying priming
-        methodology to their favorite variable!
+      \item We would love to see more linguists using priming methods as
+        a tool to understand their favorite variables!
     \end{itemize}
 \end{frame}
 
