@@ -134,7 +134,7 @@ dev.off()
 
 cairo_pdf("figures/do-results-handout.pdf", width = 6, height = 4, family = "Linux Biolinum")
 print(plot +
-      geom_point(aes(shape = prev.do), size = 3) +
+      geom_point(aes(shape = prev.do), size = 3, position = position_dodge(width = 0.5)) +
       scale_color_manual(values = c("black","black")) +
       scale_shape_discrete("Primed?"))
 dev.off()
