@@ -39,7 +39,7 @@ PPCME2.  This file is the input to the next stage.
 
 ### *Do*-support
 
-The *do*-support code relies on the data file `do.out` in the `data`
+The *do*-support code relies on the data file `do.dat` in the `data`
 subdirectory of this repository.  (Please contact the authors if you are
 interested in the scripts which generate this file from the PPCEME and
 PCEEC).  The code for creating the priming graph is contained in the

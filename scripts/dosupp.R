@@ -2,7 +2,7 @@ library(ggplot2)
 library(plyr)
 library(binom)
 
-clauses <- read.csv("data/do.out",
+clauses <- read.csv("data/do.dat",
                     sep=":",header=FALSE)
 
 colnames(clauses) <- c("ID",
