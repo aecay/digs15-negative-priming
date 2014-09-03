@@ -181,8 +181,8 @@ nnb.fac <- function(df, pre = 1250, post = 1350, write = FALSE,
         xlab("Preceding token") +
         ylab("Percent") +
         scale_y_continuous(limits=c(0,1)) +
-        scale_x_discrete(limits = c("ne", "not", "both"),
-                         labels = c("ne alone", "not alone", "ne...not")) +
+        scale_x_discrete(limits = c("ne", "both", "not"),
+                         labels = c("ne alone", "ne...not", "not alone")) +
         guides(fill = guide_legend("Token")) +
         theme(panel.grid.major.x = element_blank())
 
@@ -298,8 +298,8 @@ patch.graph <- function(df, pre = 1250, post = 1350, write = FALSE,
         xlab("Preceding token") +
         ylab("Percent") +
         scale_y_continuous(limits=c(0,1)) +
-        scale_x_discrete(limits = c("ne", "not", "both"),
-                         labels = c("ne alone", "not alone", "ne...not")) +
+        scale_x_discrete(limits = c("ne", "both", "not"),
+                         labels = c("ne alone", "ne...not", "not alone")) +
         guides(fill = guide_legend("Token")) +
         theme(panel.grid.major.x = element_blank())
 
