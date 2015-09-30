@@ -48,10 +48,11 @@ file `dosupp.R` in the `scripts` subdirectory.
 ## Analysis
 
 The analysis is provided in the form of R source code,, in two files in
-the `scripts` subdirectory.  In order to use this code, you will need to
-install the `stringr`, `ggplot2`, `plyr`, `reshape2`. and `tikzDevice`
-packages (the last only if you intend to replicate the graphs for
-compilation to PDF, and not merely interactively in the R console):
+the `scripts` subdirectory.  In order to use this code, you will need
+to install the `stringr`, `ggplot2`, `plyr`, `reshape2`, `binom`, and
+`tikzDevice` packages (the last only if you intend to replicate the
+graphs for compilation to PDF, and not merely interactively in the R
+console):
 
     install.packages(c("stringr","plyr","ggplot2", "reshape2"))
     install.packages(c("tikzDevice"), repos = c("http://R-Forge.R-project.org"))
