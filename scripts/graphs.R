@@ -25,7 +25,7 @@ estival.graph <- function (write = FALSE) {
 
     dodge <- position_dodge(width=.9)
 
-    estival$Prime <- factor(estival$Prime, levels=c('none','lexical','trans.'))
+    estival$Prime <- factor(estival$Prime, levels=c('none','lexical','transitive'))
 
     plt <- ggplot(estival, aes(fill = Target, x = Prime, y = Rate)) +
         geom_bar(position = dodge, stat = "identity") +

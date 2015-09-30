@@ -120,6 +120,8 @@ estival.graph3 <- function (write = FALSE) {
     dodge <- position_dodge(width = .9)
 
     estival$Prime <- factor(estival$Prime, levels=c('none','lexical','trans.'))
+    levels(estival$Prime)[3] <- "transitive"
+    levels(estival$Target)[3] <- "transitive"
 
     estival <- droplevels(subset(estival, Target != "active"))
 
@@ -143,14 +145,15 @@ ne.not.graph3 <- function (neg, write = FALSE) {
         ggtitle(expression(paste("Facilitation of ", italic("ne"),
             " and ", italic("not")))) +
         xlab("Prime") +
-        guides(fill = guide_legend("Target"))
+        guides(fill = guide_legend("Target")) +
+        ylab("Percent target outcome")
     if (write) {
         cairo_pdf("figures/ne-not3-handout.pdf", width = 4, height = 3,
                   family = "Linux Libertine")
         print(g + theme_minimal() + theme(panel.grid.major.x = element_blank()) +
                   scale_fill_grey(breaks = c("pct.ne", "pct.not", "pct.both"),
-                                  labels = expression(paste(italic("ne")," alone"),
-                                      paste(italic("not")," alone"),
+                                  labels = expression(paste("contains ", italic("ne")),
+                                      paste("contains ", italic("not")),
                                       italic("ne...not"))))
         dev.off()
     }
@@ -162,7 +165,8 @@ ne.not.both.graph3 <- function (neg, write = FALSE) {
         ggtitle(expression(paste("Facilitation of ", italic("ne"),
             " and ", italic("not")))) +
         xlab("Prime") +
-        guides(fill = guide_legend("Target"))
+        guides(fill = guide_legend("Target")) +
+        ylab("Percent target outcome")
     if (write) {
         cairo_pdf("figures/ne-not-both3-handout.pdf", width = 4, height = 3,
                   family = "Linux Libertine")
@@ -192,7 +196,7 @@ three.lines.graph3 <- function(neg, write = FALSE) {
                       geom_point(aes(size = total)) +
                       geom_smooth(aes(weight = total), se = FALSE, linewidth=5) +
                       xlab("Year") +
-                      ylab("% negative declaratives") +
+                      ylab("proportion neg. decl.") +
                       scale_size_area("N", breaks = c(750, 1500))
 
     if (write) {
