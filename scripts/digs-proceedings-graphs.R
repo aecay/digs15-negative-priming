@@ -1,9 +1,10 @@
+library(ggplot2)
+library(reshape2)
+library(binom)
+
 two.way.patch.graph <- function (df, pre = 1250, post = 1350, write = FALSE,
                                  file = "figures/patch-two-way", height = 2.5,
                                  confint = FALSE, patch.lines = TRUE) {
-    library(ggplot2)
-    library(reshape2)
-
     df.subs <- subset(df, year >= pre & year < post & !is.na(prev.neg.type))
 
     plot.data <- ddply(df.subs, .(prev.neg.type),
@@ -195,7 +196,6 @@ ne.not.both.graph3 <- function (neg, write = FALSE) {
 
 
 three.lines.graph3 <- function(neg, write = FALSE) {
-    library(reshape2)
     neg.plot.data <- ddply(neg, .(year), summarize,
                            ne = sum(neg.type == "ne", na.rm = TRUE),
                            not = sum(neg.type == "not", na.rm = TRUE),
