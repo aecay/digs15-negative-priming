@@ -129,9 +129,6 @@ estival.graph3 <- function (write = FALSE) {
         theme(panel.grid.major.x = element_blank())
 
     if (write) {
-        cairo_pdf("figures/estival.pdf", width = 4, height = 2.25, family = "Linux Libertine")
-        print(plt + scale_fill_brewer(palette = "Set2"))
-        dev.off()
         cairo_pdf("figures/estival-handout.pdf", width = 4, height = 2.25, family = "Linux Libertine")
         print(plt + scale_fill_grey() +
               (theme_minimal() + theme(panel.grid.major.x = element_blank())))
@@ -148,14 +145,6 @@ ne.not.graph3 <- function (neg, write = FALSE) {
         xlab("Prime") +
         guides(fill = guide_legend("Target"))
     if (write) {
-        cairo_pdf("figures/ne-not3.pdf", width = 4, height = 3,
-                  family = "Linux Libertine")
-        print(g + scale_fill_brewer(palette = "Set2",
-                                    breaks = c("pct.ne", "pct.not", "pct.both"),
-                                    labels = expression(paste(italic("ne")," alone"),
-                                        paste(italic("not")," alone"),
-                                        italic("ne...not"))))
-        dev.off()
         cairo_pdf("figures/ne-not3-handout.pdf", width = 4, height = 3,
                   family = "Linux Libertine")
         print(g + theme_minimal() + theme(panel.grid.major.x = element_blank()) +
@@ -175,14 +164,6 @@ ne.not.both.graph3 <- function (neg, write = FALSE) {
         xlab("Prime") +
         guides(fill = guide_legend("Target"))
     if (write) {
-        cairo_pdf("figures/ne-not-both3.pdf", width = 4, height = 3,
-                  family = "Linux Libertine")
-        print(g + scale_fill_brewer(palette = "Set2",
-                                    breaks = c("pct.ne", "pct.not", "pct.both"),
-                                    labels = expression(paste(italic("ne")," alone"),
-                                        paste(italic("not")," alone"),
-                                        italic("ne...not"))))
-        dev.off()
         cairo_pdf("figures/ne-not-both3-handout.pdf", width = 4, height = 3,
                   family = "Linux Libertine")
         print(g + theme_minimal() + theme(panel.grid.major.x = element_blank()) +
@@ -215,16 +196,6 @@ three.lines.graph3 <- function(neg, write = FALSE) {
                       scale_size_area("N", breaks = c(750, 1500))
 
     if (write) {
-        cairo_pdf("figures/three-lines3.pdf", width = 4, height = 2.25,
-                  family = "Linux Libertine")
-        print(plt + scale_color_brewer("Type",
-                                       breaks = c("ne", "not", "ne.not"),
-                                       labels = expression(
-                                           italic("ne"),
-                                           italic("not"),
-                                           italic("ne...not")),
-                                       palette = "Set2"))
-        dev.off()
         cairo_pdf("figures/three-lines3-handout.pdf", width = 4, height = 2.25,
                   family = "Linux Libertine")
         print(plt + scale_color_grey("Type",
