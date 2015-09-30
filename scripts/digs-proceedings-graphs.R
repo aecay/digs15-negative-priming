@@ -265,6 +265,34 @@ ne.not.both.late.graph3 <- function (neg, write = FALSE) {
     }
 }
 
+table1 <- function (neg) {
+    df.subs <- subset(neg, year >= 1250 & year < 1350 & !is.na(prev.neg.type))
+    df.subs$neg.type <- factor(df.subs$neg.type, levels = c("ne", "not", "both"))
+    df.subs$prev.neg.type <- factor(df.subs$prev.neg.type, levels = c("ne", "not", "both"))
+    levels(df.subs$neg.type) <- c("\\emph{ne}", "\\emph{not}", "both")
+    levels(df.subs$prev.neg.type) <- c("\\emph{ne}", "\\emph{not}", "both")
+
+    table <- addmargins(table(df.subs$prev.neg.type, df.subs$neg.type))
+    table <- rbind(c("\\multicolumn{3}{c}{Target}", "", "", ""),
+                   rownames(table),
+                   table)
+    table <- cbind(c("", "\\multirow{4}{*}{Prime}","","","",""),
+                   c("", "", colnames(table)),
+                   table)
+    suppressWarnings(print(xtable(table, align = c("x", "l", "l", "r", "r", "r", "r")),
+                           include.rownames = FALSE, include.colnames = FALSE,
+                           floating = FALSE, comment = FALSE, hline.after = c(),
+                           sanitize.text.function = function (x) x,
+                           add.to.row = list(pos = list(2, 5),
+                                             command = c("\\cmidrule{3-5}\n",
+                                                         "\\cmidrule{3-6}\n"))))
+    ## print(xtable(addmargins(table(df.subs$prev.neg.type, df.subs$neg.type)),
+    ##              display = c("s", "d", "d", "d", "d")),
+    ##       floating = FALSE, hline.after = c(),
+    ##       booktabs = TRUE, comment = FALSE)
+
+}
+
 
 all.graphs3 <- function (neg) {
     ne.not.graph3(neg, TRUE)
