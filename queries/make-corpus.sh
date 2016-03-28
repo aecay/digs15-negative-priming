@@ -5,7 +5,7 @@
 # the file LICENSE for more information
 
 # Edit this command to point to CorpusSearch on your machine
-CS_COMMAND="java -classpath /home/aecay/corpora/CS_2.003.04.jar csearch/CorpusSearch"
+CS_COMMAND="java -classpath /Users/chris/Dropbox/corpora/CS_2.003.04.jar csearch/CorpusSearch"
 
 # Revision queries
 $CS_COMMAND revision.q ppcme2.out

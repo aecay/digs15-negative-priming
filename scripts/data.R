@@ -14,7 +14,7 @@ cleanNegData <- function(path = "queries/coding.cod.ooo") {
                 as.numeric(as.character(df$unityear)))
     df$century <- df$decade <- df$unityear <- NULL
 
-    df$author <- str_replace(df$id, "-.*", "")
+    df$author <- str_replace(df$id, ",.*", "")
 
     df$exclude <- factor(ifelse(df$clausetype == "imperative" |
                                 df$finite == "-",

@@ -88,7 +88,7 @@ three.lines.graph2 <- function(neg, write = FALSE) {
     plt <- ggplot(aes(x = year, y = value, color = variable),
                   data = neg.plot.data) +
                       geom_point(aes(size = total)) +
-                      geom_smooth(aes(weight = total), se = FALSE, linewidth=5) +
+                      geom_smooth(aes(weight = total), se = FALSE, size=5) +
                       xlab("Year") +
                       ylab("% negative declaratives") +
                       scale_size_area("N", breaks = c(750, 1500))
