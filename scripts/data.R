@@ -16,10 +16,10 @@ cleanNegData <- function(path = "queries/coding.cod.ooo", output=TRUE, write=FAL
 
     df$author <- str_replace(df$id, ",.*", "")
 
-    df$exclude <- factor(ifelse(df$clausetype == "imperative" |
-                                df$finite == "-",
-                                "X",
-                                as.character(df$exclude)))
+    #df$exclude <- factor(ifelse(df$clausetype == "imperative" |
+    #                            df$finite == "-",
+    #                            "X",
+    #                            as.character(df$exclude)))
 
     prev.ne <- rep(NA, times = nrow(df))
     prev.not <- rep(NA, times = nrow(df))

@@ -102,19 +102,19 @@ coding_query:
 
 4: {
    /* contracted ne */
-   X: IP* idoms NEG+*
+   contraction: IP* idoms NEG+*
    /* ne ... none or ne ... never type constructions */
-   X: IP* doms Q AND Q idoms other_neg
-   X: IP* idoms ADVP* AND ADVP* idoms ADV AND ADV idoms neverplus
+   concord: IP* doms Q AND Q idoms other_neg
+   concord: IP* idoms ADVP* AND ADVP* idoms ADV AND ADV idoms neverplus
    /* not only type constructions */
-   X: not iprecedes FP*
+   only: not iprecedes FP*
    /* the following cases look like constituent negation */
    /* John might eat but not drink */
-   X: (IP* idoms NP-SBJ) AND (NP-SBJ idoms \*con\*) AND (IP* idoms NEG) AND (NEG idoms not) AND (NEG iprecedes tensed_verb)
+   constituent: (IP* idoms NP-SBJ) AND (NP-SBJ idoms \*con\*) AND (IP* idoms NEG) AND (NEG idoms not) AND (NEG iprecedes tensed_verb)
    /* John might not frequently eat */
-   X: (IP* idoms ADVP*) AND (IP* idoms NEG) AND (NEG idoms not) AND (NEG iprecedes ADVP*)
+   constituent: (IP* idoms ADVP*) AND (IP* idoms NEG) AND (NEG idoms not) AND (NEG iprecedes ADVP*)
    /* conjoined IPs don't count */
-   X: (IP* idoms CONJP*) AND (IP* idoms NEG) AND (NEG precedes tensed_verb) AND (CONJP* doms tensed_verb)
+   conjoined: (IP* idoms CONJP*) AND (IP* idoms NEG) AND (NEG precedes tensed_verb) AND (CONJP* doms tensed_verb)
    /* corpus bugs */
    X: CMCTPARS,301.C1.513 inID
    X: CMEDMUND,170.216 inID
