@@ -2,7 +2,7 @@
 # Available under the Creative Commons AT-SA or GPL v2+ licenses: see
 # the file LICENSE for more information
 
-cleanNegData <- function(path = "queries/coding.cod.ooo") {
+cleanNegData <- function(path = "queries/coding.cod.ooo", output=TRUE, write=FALSE) {
     library(stringr)
 
     df <- read.csv(path, sep = ":", header = FALSE)
@@ -14,12 +14,12 @@ cleanNegData <- function(path = "queries/coding.cod.ooo") {
                 as.numeric(as.character(df$unityear)))
     df$century <- df$decade <- df$unityear <- NULL
 
-    df$author <- str_replace(df$id, "-.*", "")
+    df$author <- str_replace(df$id, ",.*", "")
 
-    df$exclude <- factor(ifelse(df$clausetype == "imperative" |
-                                df$finite == "-",
-                                "X",
-                                as.character(df$exclude)))
+    #df$exclude <- factor(ifelse(df$clausetype == "imperative" |
+    #                            df$finite == "-",
+    #                            "X",
+    #                            as.character(df$exclude)))
 
     prev.ne <- rep(NA, times = nrow(df))
     prev.not <- rep(NA, times = nrow(df))
@@ -86,5 +86,12 @@ cleanNegData <- function(path = "queries/coding.cod.ooo") {
     df$datepd <- ifelse(df$year < 1300, 1,
                         ifelse(df$year == 1300, 2, 3))
 
-    return(df)
+    if (write) {
+        write.csv(df, file="data/neg-data.csv", row.names=FALSE)
+    }
+    if (output) {
+        return(df)
+    }
 }
+
+cleanNegData(output=FALSE, write=TRUE)
